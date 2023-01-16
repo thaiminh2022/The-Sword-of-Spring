@@ -64,6 +64,15 @@ namespace TheSwordOfSpring.Modules
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""OpenInventory"",
+                    ""type"": ""Button"",
+                    ""id"": ""1d3eba8d-696e-4fee-a282-c270370dee12"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -154,11 +163,62 @@ namespace TheSwordOfSpring.Modules
                     ""action"": ""Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cc6a4ac5-2ef6-48b8-864a-bc60a2ce64e2"",
+                    ""path"": ""<Keyboard>/b"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OpenInventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""UIMap"",
+            ""id"": ""5fc0d22b-7897-419c-b6e2-90a6322a2bdb"",
+            ""actions"": [
+                {
+                    ""name"": ""ExitUIMode"",
+                    ""type"": ""Button"",
+                    ""id"": ""b12ad811-50e0-4233-964c-314cea9e1c01"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""e1b0b8e2-9d8c-441b-96a2-9118f2867400"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ExitUIMode"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
     ],
-    ""controlSchemes"": []
+    ""controlSchemes"": [
+        {
+            ""name"": ""Keyboard"",
+            ""bindingGroup"": ""Keyboard"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<Keyboard>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                }
+            ]
+        }
+    ]
 }");
             // Player
             m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
@@ -166,6 +226,10 @@ namespace TheSwordOfSpring.Modules
             m_Player_RightMouse = m_Player.FindAction("RightMouse", throwIfNotFound: true);
             m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
             m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
+            m_Player_OpenInventory = m_Player.FindAction("OpenInventory", throwIfNotFound: true);
+            // UIMap
+            m_UIMap = asset.FindActionMap("UIMap", throwIfNotFound: true);
+            m_UIMap_ExitUIMode = m_UIMap.FindAction("ExitUIMode", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -229,6 +293,7 @@ namespace TheSwordOfSpring.Modules
         private readonly InputAction m_Player_RightMouse;
         private readonly InputAction m_Player_Interact;
         private readonly InputAction m_Player_Attack;
+        private readonly InputAction m_Player_OpenInventory;
         public struct PlayerActions
         {
             private @PlayerInputActions m_Wrapper;
@@ -237,6 +302,7 @@ namespace TheSwordOfSpring.Modules
             public InputAction @RightMouse => m_Wrapper.m_Player_RightMouse;
             public InputAction @Interact => m_Wrapper.m_Player_Interact;
             public InputAction @Attack => m_Wrapper.m_Player_Attack;
+            public InputAction @OpenInventory => m_Wrapper.m_Player_OpenInventory;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -258,6 +324,9 @@ namespace TheSwordOfSpring.Modules
                     @Attack.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttack;
                     @Attack.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttack;
                     @Attack.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttack;
+                    @OpenInventory.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnOpenInventory;
+                    @OpenInventory.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnOpenInventory;
+                    @OpenInventory.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnOpenInventory;
                 }
                 m_Wrapper.m_PlayerActionsCallbackInterface = instance;
                 if (instance != null)
@@ -274,16 +343,66 @@ namespace TheSwordOfSpring.Modules
                     @Attack.started += instance.OnAttack;
                     @Attack.performed += instance.OnAttack;
                     @Attack.canceled += instance.OnAttack;
+                    @OpenInventory.started += instance.OnOpenInventory;
+                    @OpenInventory.performed += instance.OnOpenInventory;
+                    @OpenInventory.canceled += instance.OnOpenInventory;
                 }
             }
         }
         public PlayerActions @Player => new PlayerActions(this);
+
+        // UIMap
+        private readonly InputActionMap m_UIMap;
+        private IUIMapActions m_UIMapActionsCallbackInterface;
+        private readonly InputAction m_UIMap_ExitUIMode;
+        public struct UIMapActions
+        {
+            private @PlayerInputActions m_Wrapper;
+            public UIMapActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
+            public InputAction @ExitUIMode => m_Wrapper.m_UIMap_ExitUIMode;
+            public InputActionMap Get() { return m_Wrapper.m_UIMap; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
+            public bool enabled => Get().enabled;
+            public static implicit operator InputActionMap(UIMapActions set) { return set.Get(); }
+            public void SetCallbacks(IUIMapActions instance)
+            {
+                if (m_Wrapper.m_UIMapActionsCallbackInterface != null)
+                {
+                    @ExitUIMode.started -= m_Wrapper.m_UIMapActionsCallbackInterface.OnExitUIMode;
+                    @ExitUIMode.performed -= m_Wrapper.m_UIMapActionsCallbackInterface.OnExitUIMode;
+                    @ExitUIMode.canceled -= m_Wrapper.m_UIMapActionsCallbackInterface.OnExitUIMode;
+                }
+                m_Wrapper.m_UIMapActionsCallbackInterface = instance;
+                if (instance != null)
+                {
+                    @ExitUIMode.started += instance.OnExitUIMode;
+                    @ExitUIMode.performed += instance.OnExitUIMode;
+                    @ExitUIMode.canceled += instance.OnExitUIMode;
+                }
+            }
+        }
+        public UIMapActions @UIMap => new UIMapActions(this);
+        private int m_KeyboardSchemeIndex = -1;
+        public InputControlScheme KeyboardScheme
+        {
+            get
+            {
+                if (m_KeyboardSchemeIndex == -1) m_KeyboardSchemeIndex = asset.FindControlSchemeIndex("Keyboard");
+                return asset.controlSchemes[m_KeyboardSchemeIndex];
+            }
+        }
         public interface IPlayerActions
         {
             void OnKeyboardInput(InputAction.CallbackContext context);
             void OnRightMouse(InputAction.CallbackContext context);
             void OnInteract(InputAction.CallbackContext context);
             void OnAttack(InputAction.CallbackContext context);
+            void OnOpenInventory(InputAction.CallbackContext context);
+        }
+        public interface IUIMapActions
+        {
+            void OnExitUIMode(InputAction.CallbackContext context);
         }
     }
 }

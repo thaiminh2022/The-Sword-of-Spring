@@ -4,11 +4,12 @@ namespace TheSwordOfSpring.Modules
 {
     public interface IBaseInput
     {
-        public bool MouseRightClick();
-        public bool InteractPressed();
-        public bool AttackPressed();
+        bool MouseRightClick();
+        bool InteractPressed();
+        bool AttackPressed();
+        bool OpenInventory();
 
-        public Vector2 GetKeyBoardInput();
+        Vector2 GetKeyBoardInput();
     }
 }
 

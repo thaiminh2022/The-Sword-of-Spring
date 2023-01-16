@@ -6,13 +6,12 @@ namespace TheSwordOfSpring.CharacterSystem
 {
     public class CharacterBaseInput : MonoBehaviour, IBaseInput
     {
-        [SerializeField] CharacterBase characterBase;
 
         private PlayerInputActions inputActions;
 
         private void Start()
         {
-            inputActions = characterBase.GetInputActions();
+            inputActions = CharacterBase.GetInputActions();
         }
 
         public bool MouseRightClick()
@@ -34,6 +33,12 @@ namespace TheSwordOfSpring.CharacterSystem
         {
             return inputActions.Player.Attack.IsPressed();
         }
+
+        public bool OpenInventory()
+        {
+            return inputActions.Player.OpenInventory.IsPressed();
+        }
+
     }
 }
 

@@ -23,9 +23,12 @@ namespace TheSwordOfSpring.CharacterSystem
         {
             if (atkCoolDown <= 0)
             {
-                baseWeapon?.Attack(characterStartStats.GetAtkRange(), CalculateDamage());
+                bool atkSomething = baseWeapon?.Attack(characterStartStats.GetAtkRange(), CalculateDamage()) ?? false;
 
-                atkCoolDown = startAtkCooldown;
+                if (atkSomething)
+                {
+                    atkCoolDown = startAtkCooldown;
+                }
             }
         }
 

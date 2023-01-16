@@ -1,4 +1,4 @@
-namespace TheSwordOfSpring.Stats
+namespace TheSwordOfSpring.StatSystem
 {
     public enum StatModType
     {

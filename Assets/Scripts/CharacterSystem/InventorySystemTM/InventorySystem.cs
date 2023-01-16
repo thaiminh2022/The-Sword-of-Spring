@@ -1,13 +1,68 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-using UnityRandom = UnityEngine.Random;
 
 namespace TheSwordOfSpring.CharacterSystem.InventorySystemTM
 {
-	public class InventorySystem : MonoBehaviour
-	{
-	}
+    public class InventorySystem
+    {
+        public CharacterStartStats CharacterStartStats { get; private set; }
+
+        private List<InventoryItem> inventoryItems;
+
+        public InventorySystem(CharacterStartStats characterStartStats)
+        {
+            CharacterStartStats = characterStartStats;
+            inventoryItems = new List<InventoryItem>();
+        }
+
+        public void AddItem(InventoryItem item, int amount = 1)
+        {
+            Debug.Log($"Added: {item.name}");
+            AddItemMany(item, amount);
+        }
+        public void AddItemUnique(InventoryItem item)
+        {
+            if (!inventoryItems.Contains(item))
+            {
+                AddItemMany(item, 1);
+            }
+        }
+
+        private void AddItemMany(InventoryItem item, int amount)
+        {
+            for (int i = 0; i < amount; i++)
+            {
+                item.EquipItem(CharacterStartStats);
+                inventoryItems.Add(item);
+            }
+        }
+
+        public List<InventoryItem> GetItems()
+        {
+            return inventoryItems;
+        }
+
+        private bool RemoveItem(InventoryItem item)
+        {
+            bool removed = inventoryItems.Remove(item);
+
+            if (removed)
+            {
+                item.RemoveItem(CharacterStartStats);
+            }
+
+            return removed;
+        }
+        private bool RemoveItem(int index)
+        {
+            if (index < 0 || index >= inventoryItems.Count)
+            {
+                return false;
+            }
+            return RemoveItem(inventoryItems[index]);
+
+        }
+
+
+    }
 }

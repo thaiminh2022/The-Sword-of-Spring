@@ -13,29 +13,36 @@ namespace TheSwordOfSpring.WeaponSystem
             return baseWeapon;
         }
 
-        public virtual void Attack(float atkRange, float atkDamage)
+        public virtual bool Attack(float atkRange, float atkDamage)
         {
+            Collider2D collider = Physics2D.OverlapCircle(Camera.main.ScreenToWorldPoint(Input.mousePosition), 1f);
 
-
-            Physics2D
-            .OverlapCircleAll(transform.position, atkRange)
-            .ToList()
-            .FindAll(item =>
+            if (collider != null && collider.GetComponent<IDamageable>() != null)
             {
-                if (item.gameObject == transform.root.gameObject)
+                Physics2D
+                .OverlapCircleAll(transform.position, atkRange)
+                .ToList()
+                .FindAll(item =>
                 {
-                    return false;
-                }
+                    if (item.gameObject == transform.root.gameObject)
+                    {
+                        return false;
+                    }
 
-                return item.TryGetComponent<IDamageable>(out var _);
+                    return item.TryGetComponent<IDamageable>(out var _);
 
-            })
-            .ForEach(damageableCollider =>
-            {
-                damageableCollider
-                .GetComponent<IDamageable>()
-                .Damage(atkDamage);
-            });
+                })
+                .ForEach(damageableCollider =>
+                {
+                    damageableCollider
+                    .GetComponent<IDamageable>()
+                    .Damage(atkDamage);
+                });
+
+                return true;
+            }
+            print("I ATTACK NOTHING");
+            return false;
 
         }
     }

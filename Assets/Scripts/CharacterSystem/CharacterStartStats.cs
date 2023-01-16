@@ -1,4 +1,4 @@
-using TheSwordOfSpring.Stats;
+using TheSwordOfSpring.StatSystem;
 using UnityEngine;
 using TheSwordOfSpring.Modules;
 

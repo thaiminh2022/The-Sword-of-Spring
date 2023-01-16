@@ -53,7 +53,7 @@ namespace TheSwordOfSpring.Modules
 
                 if (canInteract)
                 {
-                    bool succeed = interactable.Interact();
+                    bool succeed = interactable.Interact(gameObject);
                 }
 
 
@@ -85,6 +85,11 @@ namespace TheSwordOfSpring.Modules
 
         private void OnDrawGizmosSelected()
         {
+            if (useGizmos == false)
+            {
+                return;
+            }
+
             Gizmos.color = gizmosColor;
 
             Gizmos.DrawWireSphere(transform.position, statComponent.GetViewRange());

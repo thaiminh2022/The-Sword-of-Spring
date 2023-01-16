@@ -1,8 +1,10 @@
+
+
 namespace TheSwordOfSpring.Modules
 {
     public interface IInteractable
     {
         // bool: successfully interacted
-        bool Interact();
+        bool Interact(object source);
     }
 }

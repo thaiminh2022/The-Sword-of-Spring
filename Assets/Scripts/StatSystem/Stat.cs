@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace TheSwordOfSpring.Stats
+namespace TheSwordOfSpring.StatSystem
 {
     [Serializable]
     public class Stat

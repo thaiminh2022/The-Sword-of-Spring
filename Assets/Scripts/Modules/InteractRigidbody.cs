@@ -38,9 +38,7 @@ namespace TheSwordOfSpring.Modules
 
                 if (canInteract)
                 {
-                    bool succeed = interactable.Interact();
-                    if (succeed)
-                        print("Interaction succeed");
+                    bool succeed = interactable.Interact(gameObject);
                 }
 
 

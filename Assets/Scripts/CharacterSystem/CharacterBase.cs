@@ -1,8 +1,8 @@
 using UnityEngine;
 using TheSwordOfSpring.HealthSystemTM;
-using TheSwordOfSpring.Stats;
+using TheSwordOfSpring.StatSystem;
 using TheSwordOfSpring.Modules;
-
+using TheSwordOfSpring.CharacterSystem.InventorySystemTM;
 
 namespace TheSwordOfSpring.CharacterSystem
 {
@@ -15,16 +15,15 @@ namespace TheSwordOfSpring.CharacterSystem
         [SerializeField]
         protected CharacterStartStats baseCharacter;
         protected HealthSystem healthSystem;
-
-        protected PlayerInputActions inputActions;
+        protected InventorySystem inventory;
+        protected static PlayerInputActions inputActions;
 
 
         private void Awake()
         {
             inputActions = new PlayerInputActions();
             healthSystem = new HealthSystem(baseCharacter.Health.BaseValue);
-
-
+            inventory = new InventorySystem(baseCharacter);
         }
         private void Start()
         {
@@ -49,9 +48,14 @@ namespace TheSwordOfSpring.CharacterSystem
             return baseCharacter;
         }
 
-        public PlayerInputActions GetInputActions()
+        public static PlayerInputActions GetInputActions()
         {
             return inputActions;
+        }
+
+        public InventorySystem GetInventory()
+        {
+            return inventory;
         }
 
         public Stat[] GetAllStatAsArray()
@@ -63,5 +67,6 @@ namespace TheSwordOfSpring.CharacterSystem
         {
             baseCharacter.Health.OnModifierChange -= Health_OnModifierChange;
         }
+
     }
 }

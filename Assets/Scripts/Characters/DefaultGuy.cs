@@ -12,7 +12,7 @@ namespace TheSwordOfSpring
             if (Input.GetKeyDown("t"))
             {
                 this.GetCharacterBase()
-                .Health.AddModifier(new Stats.StatModifier(10, Stats.StatModType.Flat));
+                .Health.AddModifier(new StatSystem.StatModifier(10, StatSystem.StatModType.Flat));
             }
         }
     }
