@@ -8,7 +8,6 @@ namespace TheSwordOfSpring.UISystem
         IBaseInput baseInput;
 
         private bool inventorySwitch = false;
-        private bool isAlreadyOpen = false;
 
         private void Start()
         {
@@ -21,18 +20,9 @@ namespace TheSwordOfSpring.UISystem
             {
                 if (inventorySwitch == false)
                 {
-                    isAlreadyOpen = !isAlreadyOpen;
 
-                    if (isAlreadyOpen == true)
-                    {
-                        ChangeToUIMode();
-                    }
-                    else
-                    {
-                        ChangeToPlayerMode();
-                    }
 
-                    UIManager.Instance.SetInventoryActive(isAlreadyOpen);
+                    UIManager.Instance.SetInventoryActive(true);
                     inventorySwitch = true;
                 }
             }
