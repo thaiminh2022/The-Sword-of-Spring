@@ -44,7 +44,7 @@ namespace TheSwordOfSpring.SpawnerSystem
             if (enemies.Count <= 0)
             {
                 // No enemies to spawn
-                Debug.Log($"There were no enemy left, be free");
+                Debug.LogError($"There were no enemy left, be free");
                 return;
             }
             // Calculate time btw spawn 

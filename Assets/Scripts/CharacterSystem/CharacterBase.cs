@@ -3,6 +3,7 @@ using TheSwordOfSpring.HealthSystemTM;
 using TheSwordOfSpring.StatSystem;
 using TheSwordOfSpring.Modules;
 using TheSwordOfSpring.CharacterSystem.InventorySystemTM;
+using TheSwordOfSpring.TimeSystem;
 using System;
 
 namespace TheSwordOfSpring.CharacterSystem
@@ -34,11 +35,16 @@ namespace TheSwordOfSpring.CharacterSystem
             inputActions.Player.Enable();
 
             baseCharacter.Health.OnModifierChange += Health_OnModifierChange;
+            TimeManager.OnDay += TimeManager_OnDay;
         }
 
         private void Health_OnModifierChange(object sender, ModifierEventArgs e)
         {
-            healthSystem.SetHealthMax(baseCharacter.Health.Value, false);
+            healthSystem.SetHealthMax(baseCharacter.Health.Value, true);
+        }
+        private void TimeManager_OnDay(object sender, EventArgs e)
+        {
+            healthSystem.HealComplete();
         }
 
         public HealthSystem GetHealthSystem()

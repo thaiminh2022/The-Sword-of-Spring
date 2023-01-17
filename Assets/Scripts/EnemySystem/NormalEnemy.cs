@@ -2,6 +2,8 @@ using UnityEngine;
 using System;
 using System.Linq;
 using TheSwordOfSpring.HealthSystemTM;
+using System.Collections.Generic;
+using System.Collections;
 
 namespace TheSwordOfSpring.EnemySystem
 {
@@ -99,7 +101,7 @@ namespace TheSwordOfSpring.EnemySystem
             else
             {
                 print("Called attack");
-                Attack(player, atkRange);
+                StartCoroutine(Attack(player, atkRange));
                 timeBtwAttack = startTimeBtwAttack;
             }
         }
@@ -113,24 +115,25 @@ namespace TheSwordOfSpring.EnemySystem
 
             rb.AddForce(playerDir * moveSpeed * 1.25f, ForceMode2D.Impulse);
         }
-        private void Attack(Transform player, float atkRange)
+        private IEnumerator Attack(Transform player, float atkRange)
         {
-            if (timeBtwAttack > 0)
+            if (timeBtwAttack <= 0)
             {
-                return;
+                float damageAmount = baseEnemy.Damage.Value;
+
+                yield return new WaitForSeconds(1f);
+
+                var target = Physics2D.OverlapCircle(transform.position, atkRange + 1f, playerLayer);
+                print(target);
+
+                if (target != null)
+                {
+
+                    // wait time before actual attack
+                    this.DealDamage(target.gameObject, damageAmount);
+                    enemyAnimation.SetAttackAnimation();
+                }
             }
-
-            float damageAmount = baseEnemy.Damage.Value;
-
-            var target = Physics2D.OverlapCircle(transform.position, atkRange + 1f, playerLayer);
-            print(target);
-
-            if (target != null)
-            {
-                this.DealDamage(target.gameObject, damageAmount);
-                enemyAnimation.SetAttackAnimation();
-            }
-
         }
 
 
@@ -168,6 +171,14 @@ namespace TheSwordOfSpring.EnemySystem
         private float CalculateTimeBtwAtk()
         {
             return 1 / this.baseEnemy.AtkSpeed.Value;
+        }
+
+        private void OnDrawGizmosSelected()
+        {
+            Gizmos.color = Color.red;
+
+            Gizmos.DrawWireSphere(transform.position, baseEnemy.AtkRange.Value);
+
         }
     }
 }

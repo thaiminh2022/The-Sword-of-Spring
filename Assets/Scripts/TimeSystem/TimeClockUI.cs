@@ -4,6 +4,7 @@ namespace TheSwordOfSpring.TimeSystem
 {
     public class TimeClockUI : MonoBehaviour
     {
+        [SerializeField] LeanTweenType leanType;
         [SerializeField] private bool flipped;
         [SerializeField, Tooltip("Ref: Default morning will be 00:00, -90deg offset it by +6 hour")] private float offset;
 
@@ -16,7 +17,11 @@ namespace TheSwordOfSpring.TimeSystem
 
             float degree = TimeClockManager.CurrentClockDegree;
             float modifier = flipped ? -1 : 1;
-            rectTransform.rotation = Quaternion.Euler(0, 0, (degree + offset) * modifier);
+
+            rectTransform
+            .LeanRotateZ((degree + offset) * modifier, .3f)
+            .setEase(leanType);
+
         }
     }
 }

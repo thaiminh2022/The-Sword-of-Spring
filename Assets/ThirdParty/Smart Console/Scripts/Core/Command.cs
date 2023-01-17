@@ -13,7 +13,7 @@ namespace SmartConsole
 
         public readonly Object Target;
         public readonly MethodInfo MethodInfo;
-        
+
         public Command(Object target, MethodInfo methodInfo)
         {
             Target = target;
@@ -24,7 +24,7 @@ namespace SmartConsole
         {
             MethodInfo.Invoke(Target, null);
         }
-        
+
         public void Use(string[] parametersParts)
         {
             var parametersInfos = MethodInfo.GetParameters();
@@ -36,7 +36,7 @@ namespace SmartConsole
                 {
                     try
                     {
-                        parameters[i] = 
+                        parameters[i] =
                             CastParameter<int>(parametersInfos[i], parametersParts.ElementAtOrDefault(i), TryParseInt);
                     }
                     catch (Exception e)
@@ -48,7 +48,7 @@ namespace SmartConsole
                 {
                     try
                     {
-                        parameters[i] = 
+                        parameters[i] =
                             CastParameter<bool>(parametersInfos[i], parametersParts.ElementAtOrDefault(i), TryParseBool);
                     }
                     catch (Exception e)
@@ -60,7 +60,7 @@ namespace SmartConsole
                 {
                     try
                     {
-                        parameters[i] = 
+                        parameters[i] =
                             CastParameter<float>(parametersInfos[i], parametersParts.ElementAtOrDefault(i), TryParseFloat);
                     }
                     catch (Exception e)
@@ -87,46 +87,46 @@ namespace SmartConsole
             {
                 return n;
             }
-            
+
             throw new InvalidCastException();
         }
-        
+
         private bool TryParseBool(string toParse)
         {
             if (bool.TryParse(toParse, out bool state))
             {
                 return state;
             }
-            
+
             throw new InvalidCastException();
         }
-        
+
         private float TryParseFloat(string toParse)
         {
             toParse = toParse.Replace('.', ',');
-            
+
             if (float.TryParse(toParse, out float n))
             {
                 return n;
             }
-            
+
             throw new InvalidCastException();
         }
-        
+
         private T CastParameter<T>(ParameterInfo parameterInfo, string parametersPart, Func<string, T> parse)
         {
             if (parameterInfo.ParameterType != typeof(T))
             {
                 throw new NotSupportedException();
             }
-            
+
             if (string.IsNullOrEmpty(parametersPart) && parameterInfo.HasDefaultValue)
             {
                 return (T)parameterInfo.DefaultValue;
             }
 
             var parsedValue = parse(parametersPart);
-            
+
             return parsedValue;
         }
     }

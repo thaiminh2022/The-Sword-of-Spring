@@ -17,7 +17,6 @@ namespace TheSwordOfSpring.CharacterSystem.InventorySystemTM
 
         public void AddItem(InventoryItem item, int amount = 1)
         {
-            Debug.Log($"Added: {item.name}");
             AddItemMany(item, amount);
         }
         public void AddItemUnique(InventoryItem item)

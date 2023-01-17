@@ -16,7 +16,7 @@ TagManager:
   - Player
   - Enemy
   - Item
-  - 
+  - Props
   - 
   - 
   - 
@@ -42,13 +42,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Item
-    uniqueID: 1299975517
-    locked: 0
-  - name: Enemy
-    uniqueID: 3806386387
-    locked: 0
-  - name: Player
-    uniqueID: 1192762869
     locked: 0

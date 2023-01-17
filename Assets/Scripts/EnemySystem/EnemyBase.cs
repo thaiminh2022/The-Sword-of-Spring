@@ -46,8 +46,7 @@ namespace TheSwordOfSpring.EnemySystem
 
         protected void DealDamage(GameObject target, float amount)
         {
-            // target.GetComponent<IDamageable>().Damage(amount);
-            print($"I deal: {amount}, to: {target}");
+            target.GetComponent<IDamageable>().Damage(amount);
         }
     }
 }
