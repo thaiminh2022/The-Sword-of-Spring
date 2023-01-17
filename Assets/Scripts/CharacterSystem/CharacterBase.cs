@@ -3,6 +3,7 @@ using TheSwordOfSpring.HealthSystemTM;
 using TheSwordOfSpring.StatSystem;
 using TheSwordOfSpring.Modules;
 using TheSwordOfSpring.CharacterSystem.InventorySystemTM;
+using System;
 
 namespace TheSwordOfSpring.CharacterSystem
 {
@@ -10,7 +11,7 @@ namespace TheSwordOfSpring.CharacterSystem
     /// A class for inheriting the character, with some basic future implemented
     /// </summary>
     [RequireComponent(typeof(CharacterStartStats))]
-    public class CharacterBase : MonoBehaviour, IGetHealthSystem, IGetCharacterBase
+    public class CharacterBase : MonoBehaviour, IGetHealthSystem, IGetCharacterBase, IDamageable
     {
         [SerializeField]
         protected CharacterStartStats baseCharacter;
@@ -22,10 +23,12 @@ namespace TheSwordOfSpring.CharacterSystem
         private void Awake()
         {
             inputActions = new PlayerInputActions();
+            print(baseCharacter.Health.BaseValue);
+
             healthSystem = new HealthSystem(baseCharacter.Health.BaseValue);
             inventory = new InventorySystem(baseCharacter);
         }
-        private void Start()
+        protected virtual void Start()
         {
             inputActions.Enable();
             inputActions.Player.Enable();
@@ -68,5 +71,14 @@ namespace TheSwordOfSpring.CharacterSystem
             baseCharacter.Health.OnModifierChange -= Health_OnModifierChange;
         }
 
+        public void Damage(float damage)
+        {
+            TakeDamage(damage);
+        }
+        protected virtual void TakeDamage(float damage)
+        {
+            healthSystem.Damage(damage);
+            print($"Player Ouch: {healthSystem.GetHealth()}");
+        }
     }
 }

@@ -65,7 +65,7 @@ namespace TheSwordOfSpring.Modules
         {
             float smallestDistance = interactableGameObjects.Min((selector) => disc(selector));
 
-            if (smallestDistance < statComponent.GetViewRange())
+            if (smallestDistance > statComponent.GetViewRange())
             {
                 interactable = null;
                 return false;

@@ -13,23 +13,23 @@ MonoBehaviour:
   m_Name: ParentFolded
   m_EditorClassIdentifier: 
   name: "Gi\u1EA5y M\u1EDDi Ph\u1EE5 Huynh \u0111\u01B0\u1EE3c g\u1EADp l\u1EA1i"
-  desc: 
+  desc: "C\xF3 ng\u01B0\u1EDDi coi n\xF3 r\u1ED3i th\xEC ph\u1EA3i..."
   sprite: {fileID: -1283602710, guid: 6ba76087dea36f146b0d188970314f23, type: 3}
   healthBuff:
-    ModType: 0
-    Amount: 0
+    ModType: 100
+    Amount: -10
   viewRangeBuff:
-    ModType: 0
+    ModType: 100
     Amount: 0
   damageBuff:
-    ModType: 0
-    Amount: 0
+    ModType: 100
+    Amount: -2
   atkRangeBuff:
-    ModType: 0
+    ModType: 100
     Amount: 0
   atkSpeedBuff:
-    ModType: 0
-    Amount: 0
+    ModType: 200
+    Amount: 50
   moveSpeedBuff:
-    ModType: 0
-    Amount: 0
+    ModType: 100
+    Amount: 2.5

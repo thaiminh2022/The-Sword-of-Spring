@@ -38,7 +38,7 @@ namespace TheSwordOfSpring.Modules
 
                 if (canInteract)
                 {
-                    bool succeed = interactable.Interact(gameObject);
+                    interactable?.Interact(gameObject);
                 }
 
 
@@ -48,19 +48,28 @@ namespace TheSwordOfSpring.Modules
 
         private bool TryGetClosetInteractable(out IInteractable interactable)
         {
-            List<Collider2D> colliders = Physics2D.OverlapCircleAll(transform.position, statComponent.GetViewRange()).ToList();
+            List<Collider2D> colliders = Physics2D.OverlapCircleAll(transform.position, statComponent.GetViewRange()).ToList().FindAll(item => item.gameObject != transform.root.gameObject);
 
             if (colliders.Count <= 0)
             {
-
                 interactable = null;
                 return false;
 
             }
 
+            float smallestDistance = colliders.Min((selector) => disc(selector));
+            if (smallestDistance > statComponent.GetViewRange())
+            {
+                interactable = null;
+                return false;
+            }
+
             interactable = colliders
+            .FindAll(item => item.GetComponent<IInteractable>() != null)
             .Aggregate((min, next) => disc(min) > disc(next) ? next : min)
             .GetComponent<IInteractable>();
+
+            print(interactable);
 
             return true;
         }

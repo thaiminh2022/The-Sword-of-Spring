@@ -16,20 +16,20 @@ MonoBehaviour:
   desc: 
   sprite: {fileID: -1922134207, guid: 0df361f6e64d86b46ad790270b39f0ca, type: 3}
   healthBuff:
-    ModType: 0
-    Amount: 0
+    ModType: 100
+    Amount: 5
   viewRangeBuff:
-    ModType: 0
+    ModType: 100
     Amount: 0
   damageBuff:
-    ModType: 0
+    ModType: 100
     Amount: 0
   atkRangeBuff:
-    ModType: 0
+    ModType: 100
     Amount: 0
   atkSpeedBuff:
-    ModType: 0
-    Amount: 0
+    ModType: 100
+    Amount: 0.3
   moveSpeedBuff:
-    ModType: 0
-    Amount: 0
+    ModType: 200
+    Amount: -1

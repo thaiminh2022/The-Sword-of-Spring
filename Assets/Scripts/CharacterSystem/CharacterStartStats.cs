@@ -4,7 +4,6 @@ using TheSwordOfSpring.Modules;
 
 namespace TheSwordOfSpring.CharacterSystem
 {
-    [System.Serializable]
     public class CharacterStartStats : MonoBehaviour, IStatComponent
     {
         [SerializeField] CharacterScriptableObject baseStat;
@@ -20,11 +19,11 @@ namespace TheSwordOfSpring.CharacterSystem
         private void Awake()
         {
             Health = new Stat(baseStat.health);
-            Damage = new Stat(baseStat.damage);
-            AtkRange = new Stat(baseStat.atkRange);
-            AtkSpeed = new Stat(baseStat.atkSpeed);
-            MoveSpeed = new Stat(baseStat.moveSpeed);
-            ViewRange = new Stat(baseStat.viewRange);
+            Damage = new Stat(baseStat.damage, 50);
+            AtkRange = new Stat(baseStat.atkRange, 4);
+            AtkSpeed = new Stat(baseStat.atkSpeed, 2.5f);
+            MoveSpeed = new Stat(baseStat.moveSpeed, 9f);
+            ViewRange = new Stat(baseStat.viewRange, 3f);
 
         }
 

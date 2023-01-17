@@ -255,7 +255,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bullet 0
+      name: Bullet_Shovel
       rect:
         serializedVersion: 2
         x: 0
@@ -276,7 +276,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bullet 1
+      name: Bullet_Fork
       rect:
         serializedVersion: 2
         x: 8
@@ -297,7 +297,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bullet 2
+      name: Bullet_WTFISTHIS
       rect:
         serializedVersion: 2
         x: 16
@@ -543,19 +543,19 @@ TextureImporter:
       Exp 0: 362616440
       Shadow: 1304559308
       Health: 934571490
-      Bullet 0: 1737672109
       Weapon 5: 1772703093
+      Bullet_Shovel: 1737672109
+      Bullet_Fork: -703694536
       Bullet 5: 154122315
       Weapon 1: -1972582131
       Weapon 3: -353751291
       Weapon 4: -144335857
       Bullet 3: -537537479
-      Bullet 1: -703694536
+      Bullet_WTFISTHIS: 762804792
       Box: -38345435
       Exp 1: 1807624531
       Exp 2: -1997803578
       Mag: 1997828774
-      Bullet 2: 762804792
       Bullet 4: -1327499133
   spritePackingTag: 
   pSDRemoveMatte: 0

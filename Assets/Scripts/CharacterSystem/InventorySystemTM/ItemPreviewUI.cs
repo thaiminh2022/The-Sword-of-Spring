@@ -36,11 +36,26 @@ namespace TheSwordOfSpring.CharacterSystem.InventorySystemTM
         {
             gameObject.SetActive(true);
             nameText.SetText(itemBase.name);
-            descText.SetText(itemBase.desc);
+            descText.SetText(CreateItemDescString(itemBase));
             itemSpritePreview.sprite = itemBase.sprite;
             UIManager.UseUIMode();
 
         }
+
+        private string CreateItemDescString(ItemScriptableObject itemBase)
+        {
+            string itemDesc = "";
+
+            foreach (var buffData in itemBase.GetBuffDatas())
+            {
+                itemDesc += $"{buffData.buffName}: {buffData.buffAmount}\n";
+            }
+
+            itemDesc += itemBase.desc;
+
+            return itemDesc;
+        }
+
         private void OnDestroy()
         {
             PickupableInventoryItem.OnItemPickUp -= PickupableInventoryItem_OnItemPickUp;

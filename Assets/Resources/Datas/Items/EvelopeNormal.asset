@@ -13,23 +13,23 @@ MonoBehaviour:
   m_Name: EvelopeNormal
   m_EditorClassIdentifier: 
   name: "Bao L\xEC X\xEC"
-  desc: 
+  desc: "Ch\u1EC9 l\xE0 bao l\xEC x\xEC b\xECnh th\u01B0\u1EDDng tho"
   sprite: {fileID: 197451915, guid: b64def1e31beb3e4983dfeff73c0ca34, type: 3}
   healthBuff:
-    ModType: 0
-    Amount: 0
+    ModType: 100
+    Amount: 3
   viewRangeBuff:
-    ModType: 0
+    ModType: 100
     Amount: 0
   damageBuff:
-    ModType: 0
-    Amount: 0
+    ModType: 200
+    Amount: 1
   atkRangeBuff:
-    ModType: 0
+    ModType: 100
     Amount: 0
   atkSpeedBuff:
-    ModType: 0
-    Amount: 0
+    ModType: 100
+    Amount: 0.5
   moveSpeedBuff:
-    ModType: 0
-    Amount: 0
+    ModType: 100
+    Amount: 0.5

@@ -45,6 +45,17 @@ namespace TheSwordOfSpring.CharacterSystem.InventorySystemTM
             return itemBase.GetBuffDatas();
         }
 
+        public static InventoryItem Create(ItemScriptableObject itemBase)
+        {
+            GameObject go = new GameObject();
+            var inventoryItem = go.AddComponent<InventoryItem>();
+            inventoryItem.itemBase = itemBase;
+            go.SetActive(false);
+
+            return inventoryItem;
+
+        }
+
     }
 
 

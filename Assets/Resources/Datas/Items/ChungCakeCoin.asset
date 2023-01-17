@@ -12,24 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a794602a5ea593140bd5e923d84f7ee0, type: 3}
   m_Name: ChungCakeCoin
   m_EditorClassIdentifier: 
-  name: "B\xE1nh Ch\u01B0ng \u0111\u1ED3ng ti\u1EC1n"
+  name: "B\xE1nh Ch\u01B0ng \u0110\u1ED3ng Ti\u1EC1n"
   desc: 
   sprite: {fileID: 927092350, guid: 0df361f6e64d86b46ad790270b39f0ca, type: 3}
   healthBuff:
-    ModType: 0
-    Amount: 0
+    ModType: 100
+    Amount: 6
   viewRangeBuff:
-    ModType: 0
+    ModType: 100
     Amount: 0
   damageBuff:
-    ModType: 0
+    ModType: 100
     Amount: 0
   atkRangeBuff:
-    ModType: 0
+    ModType: 100
     Amount: 0
   atkSpeedBuff:
-    ModType: 0
-    Amount: 0
+    ModType: 100
+    Amount: 0.6
   moveSpeedBuff:
-    ModType: 0
-    Amount: 0
+    ModType: 200
+    Amount: -1.5

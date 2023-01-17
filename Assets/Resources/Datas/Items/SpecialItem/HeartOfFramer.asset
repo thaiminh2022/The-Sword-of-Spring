@@ -13,23 +13,23 @@ MonoBehaviour:
   m_Name: HeartOfFramer
   m_EditorClassIdentifier: 
   name: "Tr\xE1i tim N\xF4ng D\xE2n"
-  desc: 
-  sprite: {fileID: 0}
+  desc: The Heart of a hardwork man or woman... whatever.
+  sprite: {fileID: -38345435, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}
   healthBuff:
-    ModType: 0
-    Amount: 0
+    ModType: 100
+    Amount: 2
   viewRangeBuff:
-    ModType: 0
+    ModType: 100
     Amount: 0
   damageBuff:
-    ModType: 0
-    Amount: 0
+    ModType: 100
+    Amount: 2
   atkRangeBuff:
-    ModType: 0
-    Amount: 0
+    ModType: 100
+    Amount: 2
   atkSpeedBuff:
-    ModType: 0
+    ModType: 100
     Amount: 0
   moveSpeedBuff:
-    ModType: 0
-    Amount: 0
+    ModType: 100
+    Amount: 2

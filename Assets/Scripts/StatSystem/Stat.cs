@@ -8,6 +8,8 @@ namespace TheSwordOfSpring.StatSystem
     public class Stat
     {
         public float BaseValue;
+        public float MaxValue = float.MaxValue - 1;
+
 
         protected bool isDirty = true;
         protected float lastBaseValue;
@@ -43,9 +45,10 @@ namespace TheSwordOfSpring.StatSystem
             StatModifiers = statModifiers.AsReadOnly();
         }
 
-        public Stat(float baseValue) : this()
+        public Stat(float baseValue, float maxValue = float.MaxValue - 1) : this()
         {
             BaseValue = baseValue;
+            MaxValue = maxValue;
         }
 
         public virtual void AddModifier(StatModifier mod)
@@ -132,7 +135,8 @@ namespace TheSwordOfSpring.StatSystem
                     finalValue *= 1 + mod.Value;
                 }
             }
-
+            // Clamp final value
+            finalValue = Math.Clamp(finalValue, float.MinValue + 1, MaxValue);
             // Workaround for float calculation errors, like displaying 12.00001 instead of 12
             return (float)Math.Round(finalValue, 4);
         }

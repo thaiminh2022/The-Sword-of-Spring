@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: The Framer
   description: 
-  sprite: {fileID: 0}
+  sprite: {fileID: -2088749509, guid: 57a1443e67528144aa07582927559650, type: 3}
   health: 10
   viewRange: 3
-  damage: 10
+  damage: 5
   atkRange: 3
   atkSpeed: 1
-  moveSpeed: 5
+  moveSpeed: 2

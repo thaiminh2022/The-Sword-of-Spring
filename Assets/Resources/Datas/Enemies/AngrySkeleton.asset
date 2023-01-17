@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd869d59ec838384bb410bd07e7f56ab, type: 3}
+  m_Name: AngrySkeleton
+  m_EditorClassIdentifier: 
+  name: "X\u01B0\u01A1ng x\u1EA9u gi\u1EADn d\u1EEF"
+  description: "Ta l\xE0 b\u1ED9 x\u01B0\u01A1ng, nh\u01B0ng gi\u1EADn d\u1EEF"
+  sprite: {fileID: 1782705385, guid: d33598d781682e049a53a0a13104ef29, type: 3}
+  health: 13
+  damage: 3
+  atkRange: 8
+  atkSpeed: 1
+  moveSpeed: 2

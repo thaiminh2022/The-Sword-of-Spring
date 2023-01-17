@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 32
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ac05a5ac55ba4f4087e497ea6f19e3b, type: 3}
+  m_Name: StaticItemsHolder
+  m_EditorClassIdentifier: 
+  ChungCakeCoin: {fileID: 11400000, guid: 47d02b3dbc8b3fa4f98e87832c559a34, type: 2}
+  ChungCakeNormal: {fileID: 11400000, guid: e7fd35c69331f1846b5181a5f6143f28, type: 2}
+  EnvelopeCoin: {fileID: 11400000, guid: 3294d6527f7a3704fb441981772ea18f, type: 2}
+  EnvelopeNormal: {fileID: 11400000, guid: 4dab946531324974e9082e07876868f7, type: 2}
+  EnvelopeFish: {fileID: 11400000, guid: 4b7b9874592f163409bba8a873643ee0, type: 2}
+  ParentFolded: {fileID: 11400000, guid: 1acde1705fa3def4d840e646ceccc890, type: 2}
+  ParentNormal: {fileID: 11400000, guid: 006bba1223ecbb34690be75f4258733e, type: 2}
+  HeartOfFarmer: {fileID: 11400000, guid: 9bf847c2467ba7041accf412ac68de4a, type: 2}
+  HeartOfSpring: {fileID: 11400000, guid: 055793ce777c41a4182185a491f3f325, type: 2}

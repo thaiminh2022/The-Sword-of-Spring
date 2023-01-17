@@ -15,7 +15,7 @@ namespace TheSwordOfSpring.CharacterSystem
 
         private void Start()
         {
-            startAtkCooldown = GetComponent<CharacterStartStats>().GetAtkSpeed();
+            startAtkCooldown = CalculateWaitSec();
             baseWeapon = weaponHolder.GetComponentInChildren<WeaponBase>();
 
         }
@@ -52,6 +52,13 @@ namespace TheSwordOfSpring.CharacterSystem
             {
                 characterStartStats = GetComponent<CharacterStartStats>();
             }
+        }
+
+        private float CalculateWaitSec()
+        {
+            float hitPerSec = GetComponent<CharacterStartStats>().GetAtkSpeed();
+            float waitSecond = 1f / hitPerSec;
+            return waitSecond;
         }
     }
 }
