@@ -6,7 +6,7 @@ namespace TheSwordOfSpring.EnemySystem
 {
     public class EnemyAnimation : AnimatorHolder<NormalEnemyAnim>
     {
-        public void SetAttackAnimation()
+        public void SetHitAnimation()
         {
             animatorSystem.SetAnimation(NormalEnemyAnim.Hit);
         }

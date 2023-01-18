@@ -7,6 +7,11 @@ namespace TheSwordOfSpring.WeaponSystem
     public class WeaponBase : MonoBehaviour, IGetWeaponScriptableObject
     {
         [SerializeField] private WeaponScriptableObject baseWeapon;
+        [SerializeField] bool useGizmos;
+
+        [SerializeField] private Transform attackPoint;
+
+        private float atkRange = 3;
 
         public WeaponScriptableObject GetWeaponScriptableObject()
         {
@@ -16,11 +21,12 @@ namespace TheSwordOfSpring.WeaponSystem
         public virtual bool Attack(float atkRange, float atkDamage)
         {
             Collider2D collider = Physics2D.OverlapCircle(Camera.main.ScreenToWorldPoint(Input.mousePosition), 1f);
+            this.atkRange = atkRange;
 
             if (collider != null && collider.GetComponent<IDamageable>() != null)
             {
                 Physics2D
-                .OverlapCircleAll(transform.position, atkRange)
+                .OverlapCircleAll(attackPoint.position, atkRange)
                 .ToList()
                 .FindAll(item =>
                 {
@@ -43,6 +49,16 @@ namespace TheSwordOfSpring.WeaponSystem
             }
             print("I ATTACK NOTHING");
             return false;
+
+        }
+
+        private void OnDrawGizmosSelected()
+        {
+            if (!useGizmos)
+                return;
+
+            Gizmos.color = Color.cyan;
+            Gizmos.DrawWireSphere(attackPoint.position, atkRange);
 
         }
     }

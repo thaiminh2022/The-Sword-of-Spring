@@ -1,6 +1,7 @@
 using UnityEngine;
 using TheSwordOfSpring.Modules;
 using TheSwordOfSpring.WeaponSystem;
+using System;
 
 namespace TheSwordOfSpring.CharacterSystem
 {
@@ -13,6 +14,8 @@ namespace TheSwordOfSpring.CharacterSystem
         private float atkCoolDown;
         private WeaponBase baseWeapon;
 
+        public event EventHandler OnAttack;
+
         private void Start()
         {
             startAtkCooldown = CalculateWaitSec();
@@ -24,11 +27,8 @@ namespace TheSwordOfSpring.CharacterSystem
             if (atkCoolDown <= 0)
             {
                 bool atkSomething = baseWeapon?.Attack(characterStartStats.GetAtkRange(), CalculateDamage()) ?? false;
-
-                if (atkSomething)
-                {
-                    atkCoolDown = startAtkCooldown;
-                }
+                OnAttack?.Invoke(this, EventArgs.Empty);
+                atkCoolDown = startAtkCooldown;
             }
         }
 

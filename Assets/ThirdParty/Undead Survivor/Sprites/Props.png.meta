@@ -129,7 +129,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Weapon 0
+      name: Shovel
       rect:
         serializedVersion: 2
         x: 0
@@ -150,7 +150,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Weapon 1
+      name: Fork
       rect:
         serializedVersion: 2
         x: 19
@@ -171,7 +171,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Weapon 2
+      name: Scype
       rect:
         serializedVersion: 2
         x: 38
@@ -192,7 +192,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Weapon 3
+      name: Pistol
       rect:
         serializedVersion: 2
         x: 0
@@ -213,7 +213,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Weapon 4
+      name: Rifle
       rect:
         serializedVersion: 2
         x: 19
@@ -234,7 +234,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Weapon 5
+      name: Shotgun
       rect:
         serializedVersion: 2
         x: 38
@@ -538,24 +538,24 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Weapon 0: 143021600
-      Weapon 2: 1349035616
       Exp 0: 362616440
       Shadow: 1304559308
       Health: 934571490
-      Weapon 5: 1772703093
       Bullet_Shovel: 1737672109
       Bullet_Fork: -703694536
+      Scype: 1349035616
+      Fork: -1972582131
       Bullet 5: 154122315
-      Weapon 1: -1972582131
-      Weapon 3: -353751291
-      Weapon 4: -144335857
+      Shovel: 143021600
+      Rifle: -144335857
       Bullet 3: -537537479
       Bullet_WTFISTHIS: 762804792
       Box: -38345435
       Exp 1: 1807624531
+      Shotgun: 1772703093
       Exp 2: -1997803578
       Mag: 1997828774
+      Pistol: -353751291
       Bullet 4: -1327499133
   spritePackingTag: 
   pSDRemoveMatte: 0

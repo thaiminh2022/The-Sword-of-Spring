@@ -1,8 +1,8 @@
 using UnityEngine;
 using System;
 using System.Linq;
-using TheSwordOfSpring.HealthSystemTM;
-using System.Collections.Generic;
+using TheSwordOfSpring.TimeSystem;
+using TheSwordOfSpring.EffectsSystem;
 using System.Collections;
 
 namespace TheSwordOfSpring.EnemySystem
@@ -30,11 +30,25 @@ namespace TheSwordOfSpring.EnemySystem
             enemyAnimation = GetComponent<EnemyAnimation>();
 
             healthSystem.OnDead += HealthSystem_OnDead;
+            healthSystem.OnDamaged += HealthSystem_OnDamage;
+            TimeManager.OnDay += TimeManager_OnDay;
         }
 
         private void HealthSystem_OnDead(object sender, EventArgs args)
         {
             SetEnemyState(EnemyState.DEAD);
+        }
+        private void HealthSystem_OnDamage(object sender, EventArgs args)
+        {
+            enemyAnimation.SetHitAnimation();
+        }
+        private void TimeManager_OnDay(object sender, EventArgs args)
+        {
+            if (enemyState != EnemyState.DEAD)
+            {
+                EffectsManager
+                .ApplyEffectToGameObject(EffectsType.BURNING, gameObject, TimeManager.GetDayLength());
+            }
         }
         private void Update()
         {
@@ -131,7 +145,6 @@ namespace TheSwordOfSpring.EnemySystem
 
                     // wait time before actual attack
                     this.DealDamage(target.gameObject, damageAmount);
-                    enemyAnimation.SetAttackAnimation();
                 }
             }
         }
@@ -166,7 +179,9 @@ namespace TheSwordOfSpring.EnemySystem
         private void Dead()
         {
             enemyAnimation.SetDieAnimation();
+
         }
+
 
         private float CalculateTimeBtwAtk()
         {
@@ -179,6 +194,12 @@ namespace TheSwordOfSpring.EnemySystem
 
             Gizmos.DrawWireSphere(transform.position, baseEnemy.AtkRange.Value);
 
+        }
+        private void OnDestroy()
+        {
+            healthSystem.OnDead -= HealthSystem_OnDead;
+            healthSystem.OnDamaged -= HealthSystem_OnDamage;
+            TimeManager.OnDay -= TimeManager_OnDay;
         }
     }
 }

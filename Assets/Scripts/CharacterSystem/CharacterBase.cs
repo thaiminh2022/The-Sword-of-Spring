@@ -16,9 +16,15 @@ namespace TheSwordOfSpring.CharacterSystem
     {
         [SerializeField]
         protected CharacterStartStats baseCharacter;
+
         protected HealthSystem healthSystem;
         protected InventorySystem inventory;
+
         protected static PlayerInputActions inputActions;
+
+        // float: damage amount
+        public event EventHandler<float> OnTakeDamage;
+
 
 
         private void Awake()
@@ -80,6 +86,7 @@ namespace TheSwordOfSpring.CharacterSystem
         public void Damage(float damage)
         {
             TakeDamage(damage);
+            OnTakeDamage?.Invoke(this, damage);
         }
         protected virtual void TakeDamage(float damage)
         {
