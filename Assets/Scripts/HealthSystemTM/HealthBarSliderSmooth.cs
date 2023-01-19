@@ -67,7 +67,6 @@ namespace TheSwordOfSpring.HealthSystemTM
                     //Snap when it's enough
                     slider.value = currentHealthNormalized;
                     lastHealthNormalized = currentHealthNormalized;
-                    print("Filled");
                     canUpdate = false;
                 }
 

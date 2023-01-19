@@ -266,7 +266,7 @@ namespace Redcode.Extensions
             var direction = end - start;
             var lineMagnitude = direction.magnitude;
             direction.Normalize();
-            
+
             var distance = Mathf.Clamp(Vector2.Dot(point - start, direction), 0f, lineMagnitude);
             return (start + direction * distance, distance);
         }

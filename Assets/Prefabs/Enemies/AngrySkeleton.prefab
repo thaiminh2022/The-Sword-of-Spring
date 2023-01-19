@@ -96,10 +96,10 @@ GameObject:
   - component: {fileID: 1553197556069556665}
   - component: {fileID: 1553197556069556670}
   - component: {fileID: 1553197556069556671}
-  - component: {fileID: 1553197556069556668}
   - component: {fileID: 1553197556069556669}
   - component: {fileID: 1553197556069556610}
   - component: {fileID: 1553197556069556611}
+  - component: {fileID: 3822680509990651894}
   m_Layer: 7
   m_Name: AngrySkeleton
   m_TagString: Enemy
@@ -216,22 +216,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1553197556069556668
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1553197556069556608}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b35400d4f6a6bb84ca9ee43cd12137fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseEnemy: {fileID: 1553197556069556669}
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!114 &1553197556069556669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -299,3 +283,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.74689674, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &3822680509990651894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1553197556069556608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f3dd3872d1b64043b8f4a35d39dd4d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseEnemy: {fileID: 1553197556069556669}
+  projectileObject: {fileID: 1725016295554272094, guid: 5ec351abd95f1904aa7714d2f8a47b23, type: 3}

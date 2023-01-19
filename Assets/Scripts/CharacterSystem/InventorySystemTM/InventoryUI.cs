@@ -2,6 +2,7 @@ using UnityEngine;
 using System;
 using UnityEngine.UI;
 using TheSwordOfSpring.UISystem;
+using TheSwordOfSpring.TimeSystem;
 
 namespace TheSwordOfSpring.CharacterSystem.InventorySystemTM
 {
@@ -19,6 +20,7 @@ namespace TheSwordOfSpring.CharacterSystem.InventorySystemTM
                 OnCloseInventory?.Invoke(this, EventArgs.Empty);
                 UIManager.UsePlayerMode();
 
+                GameTimeManager.Resume();
                 gameObject.SetActive(false);
             });
         }

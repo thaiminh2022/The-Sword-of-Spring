@@ -15,9 +15,9 @@ MonoBehaviour:
   name: The Framer
   description: 
   sprite: {fileID: -2088749509, guid: 57a1443e67528144aa07582927559650, type: 3}
-  health: 10
-  viewRange: 3
+  health: 20
+  viewRange: 2
   damage: 5
-  atkRange: 3
+  atkRange: 1
   atkSpeed: 1
   moveSpeed: 2

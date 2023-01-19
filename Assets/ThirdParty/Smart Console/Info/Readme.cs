@@ -9,7 +9,7 @@ namespace SmartConsole.Info
         public string title;
         public Section[] sections;
         public bool loadedLayout;
-        
+
         [Serializable]
         public class Section
         {

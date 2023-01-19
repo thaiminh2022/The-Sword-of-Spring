@@ -15,7 +15,7 @@ MonoBehaviour:
   name: "Th\u1ECBt th\u1ED1i gi\u1EADn gi\u1EEF"
   description: "gahwww... ta v\u1EABn bi\u1EBFt \u0111i nh\u01B0ng m\xE0 ok hen"
   sprite: {fileID: 613658156, guid: 1bc6097228993f045852159e71f81d5b, type: 3}
-  health: 20
+  health: 10
   damage: 1
   atkRange: 0.5
   atkSpeed: 1

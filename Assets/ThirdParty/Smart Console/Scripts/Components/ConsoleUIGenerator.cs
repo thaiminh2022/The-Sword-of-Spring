@@ -8,19 +8,19 @@ namespace SmartConsole.Components
     {
         [SerializeField] private Transform m_GridContent;
         [SerializeField] private GameObject m_LogMessageTextPrefab;
-        
+
         private ConsoleSystem m_ConsoleSystem;
         private List<GameObject> m_AutocompleteInstances = new List<GameObject>();
         private string m_AutocompleteCommandRef;
         private bool m_IsLastMessageEven;
-        
+
         private void OnEnable()
         {
             m_ConsoleSystem.OnSubmitLogMessage += GenerateLog;
             m_ConsoleSystem.OnSubmitAutocompleteLogMessage += GenerateAutocompleteLog;
             m_ConsoleSystem.OnClearAutocomplete += ClearAutocompletes;
         }
-        
+
         private void OnDisable()
         {
             m_ConsoleSystem.OnSubmitLogMessage -= GenerateLog;
@@ -36,7 +36,7 @@ namespace SmartConsole.Components
         private void GenerateLog(LogMessage logMessage)
         {
             GameObject logInstance = Instantiate(m_LogMessageTextPrefab, m_GridContent);
-            
+
             if (logInstance.TryGetComponent(out LogMessageSetup logInstanceSetup))
             {
                 logInstanceSetup.SetText(logMessage.Text);
@@ -58,7 +58,7 @@ namespace SmartConsole.Components
                 ClearAutocompletes();
                 m_AutocompleteCommandRef = text;
             }
-                
+
             m_AutocompleteInstances.Add(logInstance);
             m_ConsoleSystem.AutocompleteLogMessages.Add(logMessage);
 
@@ -67,7 +67,7 @@ namespace SmartConsole.Components
                 logInstanceSetup.SetText(logMessage.Text, false);
                 logInstanceSetup.SetIcon(LogMessageTypes.Autocomplete);
                 logInstanceSetup.SetAutocompleteBackgroundColor();
-                
+
                 if (logMessage.ParametersNames != null)
                 {
                     logInstanceSetup.SetTextParameter(logMessage.ParametersNames);
@@ -81,11 +81,11 @@ namespace SmartConsole.Components
             {
                 Destroy(m_AutocompleteInstances[i]);
             }
-            
+
             m_AutocompleteInstances.Clear();
             m_ConsoleSystem.AutocompleteLogMessages.Clear();
         }
-        
+
         public void Clear()
         {
             foreach (Transform child in m_GridContent)

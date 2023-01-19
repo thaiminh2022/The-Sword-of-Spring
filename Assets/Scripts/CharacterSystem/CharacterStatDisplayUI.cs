@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine.UI;
 using Redcode.Extensions;
 using TheSwordOfSpring.StatSystem;
 using TheSwordOfSpring.CharacterSystem.InventorySystemTM;
@@ -14,11 +15,13 @@ namespace TheSwordOfSpring.CharacterSystem
         [SerializeField] private CharacterStartStats characterStat;
         [SerializeField] private Transform statHolder;
         [SerializeField] private GameObject statDisplayTemplate;
+        [SerializeField] private Image playerSprite;
 
         private void Start()
         {
             PickupableInventoryItem.OnItemPickUp += PickupableInventoryItem_OnItemPickup;
             UpdateStat();
+            playerSprite.sprite = characterStat.GetSprite();
         }
 
         private void PickupableInventoryItem_OnItemPickup(object sender, ItemScriptableObject item)

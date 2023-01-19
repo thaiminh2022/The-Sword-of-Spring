@@ -34,10 +34,10 @@ namespace SmartConsole.Info.Editor
 
         private static void LoadLayout()
         {
-            var assembly = typeof(EditorApplication).Assembly; 
+            var assembly = typeof(EditorApplication).Assembly;
             var windowLayoutType = assembly.GetType("UnityEditor.WindowLayout", true);
             var method = windowLayoutType.GetMethod("LoadWindowLayout", BindingFlags.Public | BindingFlags.Static);
-            method.Invoke(null, new object[]{Path.Combine(Application.dataPath, "TutorialInfo/Layout.wlt"), false});
+            method.Invoke(null, new object[] { Path.Combine(Application.dataPath, "TutorialInfo/Layout.wlt"), false });
         }
 
         [MenuItem("Smart Console/Info")]
@@ -55,7 +55,7 @@ namespace SmartConsole.Info.Editor
             else
             {
                 Debug.Log("Couldn't find a readme");
-                
+
                 return null;
             }
         }
@@ -74,23 +74,23 @@ namespace SmartConsole.Info.Editor
 
         private Readme m_Readme;
         private bool m_Initialized;
-        
+
         private void OnEnable()
         {
             if (target == null)
             {
                 return;
             }
-            
+
             m_Readme = (Readme)target;
         }
 
         protected override void OnHeaderGUI()
         {
             Init();
-		
-            var iconWidth = Mathf.Min(EditorGUIUtility.currentViewWidth/3f - 20f, 128f);
-		
+
+            var iconWidth = Mathf.Min(EditorGUIUtility.currentViewWidth / 3f - 20f, 128f);
+
             GUILayout.BeginHorizontal("In BigTitle");
             {
                 GUILayout.Label(m_Readme.icon, GUILayout.Width(iconWidth), GUILayout.Height(iconWidth));
@@ -109,12 +109,12 @@ namespace SmartConsole.Info.Editor
                 {
                     GUILayout.Label(section.heading, HeadingStyle);
                 }
-                
+
                 if (!string.IsNullOrEmpty(section.text))
                 {
                     GUILayout.Label(section.text, BodyStyle);
                 }
-                
+
                 if (!string.IsNullOrEmpty(section.linkText))
                 {
                     if (LinkLabel(new GUIContent(section.linkText)))
@@ -133,23 +133,23 @@ namespace SmartConsole.Info.Editor
             {
                 return;
             }
-                
+
             m_BodyStyle = new GUIStyle(EditorStyles.label);
             m_BodyStyle.wordWrap = true;
             m_BodyStyle.fontSize = 14;
-		
+
             m_TitleStyle = new GUIStyle(m_BodyStyle);
             m_TitleStyle.fontSize = 26;
-		
+
             m_HeadingStyle = new GUIStyle(m_BodyStyle);
-            m_HeadingStyle.fontSize = 18 ;
-		
+            m_HeadingStyle.fontSize = 18;
+
             m_LinkStyle = new GUIStyle(m_BodyStyle);
             m_LinkStyle.wordWrap = false;
             // Match selection color which works nicely for both light and dark skins
-            m_LinkStyle.normal.textColor = new Color (0x00/255f, 0x78/255f, 0xDA/255f, 1f);
+            m_LinkStyle.normal.textColor = new Color(0x00 / 255f, 0x78 / 255f, 0xDA / 255f, 1f);
             m_LinkStyle.stretchWidth = false;
-		
+
             m_Initialized = true;
         }
 
@@ -157,15 +157,15 @@ namespace SmartConsole.Info.Editor
         {
             var position = GUILayoutUtility.GetRect(label, LinkStyle, options);
 
-            Handles.BeginGUI ();
+            Handles.BeginGUI();
             Handles.color = LinkStyle.normal.textColor;
-            Handles.DrawLine (new Vector3(position.xMin, position.yMax), new Vector3(position.xMax, position.yMax));
+            Handles.DrawLine(new Vector3(position.xMin, position.yMax), new Vector3(position.xMax, position.yMax));
             Handles.color = Color.white;
-            Handles.EndGUI ();
+            Handles.EndGUI();
 
-            EditorGUIUtility.AddCursorRect (position, MouseCursor.Link);
+            EditorGUIUtility.AddCursorRect(position, MouseCursor.Link);
 
-            return GUI.Button (position, label, LinkStyle);
+            return GUI.Button(position, label, LinkStyle);
         }
     }
 }

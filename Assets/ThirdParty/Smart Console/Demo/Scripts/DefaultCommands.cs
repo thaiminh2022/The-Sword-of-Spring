@@ -16,27 +16,27 @@ namespace SmartConsole.Demo
         {
             base.Start();
         }
-    
+
         /* write command functions using snake case convention */
-    
+
         [Command]
         public void print_hello_world()
         {
             Debug.Log("Hello World!");
         }
-    
+
         [Command]
         public void reload_current_scene()
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
-    
+
         [Command]
         public void load_scene(int index)
         {
             SceneManager.LoadScene(index);
         }
-    
+
         [Command]
         public void help()
         {

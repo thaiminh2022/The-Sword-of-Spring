@@ -91,6 +91,16 @@ namespace TheSwordOfSpring.TimeSystem
             }
             return Mathf.Abs(Hour - StartNightHour);
         }
+
+        public static int GetDifferencesHourFromStartDay()
+        {
+
+            if (Hour >= 0 && Hour < StartDayHour)
+            {
+                return Mathf.Abs(24 - StartDayHour + Hour);
+            }
+            return Mathf.Abs(Hour - StartDayHour);
+        }
         public static int GetNightLength()
         {
             return 24 - GetDayLength();
@@ -103,6 +113,14 @@ namespace TheSwordOfSpring.TimeSystem
         public static float GetHourNormalize()
         {
             return Hour / 24f;
+        }
+        public static float GetNightHourNormalized()
+        {
+            return GetDifferencesHourFromStartNight() / GetNightLength();
+        }
+        public static float GetDayHourNormalized()
+        {
+            return GetDifferencesHourFromStartDay() / GetDayLength();
         }
 
         private bool InRange(int start, int end, int value)

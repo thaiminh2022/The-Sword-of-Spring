@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 307bf9f8cd4f70f4e8b9700357df70df, type: 3}
+  m_Name: PSHolder
+  m_EditorClassIdentifier: 
+  Fire_PS: {fileID: 6293429685429735857, guid: a4d28c61836f8904a8ed0cb989c0f8fb, type: 3}
+  Stun_PS: {fileID: 0}
+  Explosion_PS: {fileID: 3452496746483643986, guid: d10af5f2c558d334ebef0e19397a3e46, type: 3}
+  Dash_PS: {fileID: 6293429685429735857, guid: a4d28c61836f8904a8ed0cb989c0f8fb, type: 3}

@@ -4,6 +4,7 @@ using System.Linq;
 using TheSwordOfSpring.TimeSystem;
 using TheSwordOfSpring.EffectsSystem;
 using System.Collections;
+using Redcode.Extensions;
 
 namespace TheSwordOfSpring.EnemySystem
 {
@@ -40,7 +41,11 @@ namespace TheSwordOfSpring.EnemySystem
         }
         private void HealthSystem_OnDamage(object sender, EventArgs args)
         {
-            enemyAnimation.SetHitAnimation();
+            if (enemyState != EnemyState.DEAD)
+            {
+                enemyAnimation.SetHitAnimation();
+            }
+
         }
         private void TimeManager_OnDay(object sender, EventArgs args)
         {
@@ -74,7 +79,7 @@ namespace TheSwordOfSpring.EnemySystem
                 default:
                     break;
             }
-
+            FlipObject();
             if (timeBtwAttack > 0)
             {
                 timeBtwAttack -= Time.deltaTime;
@@ -114,7 +119,6 @@ namespace TheSwordOfSpring.EnemySystem
             }
             else
             {
-                print("Called attack");
                 StartCoroutine(Attack(player, atkRange));
                 timeBtwAttack = startTimeBtwAttack;
             }
@@ -138,7 +142,6 @@ namespace TheSwordOfSpring.EnemySystem
                 yield return new WaitForSeconds(1f);
 
                 var target = Physics2D.OverlapCircle(transform.position, atkRange + 1f, playerLayer);
-                print(target);
 
                 if (target != null)
                 {
@@ -179,7 +182,21 @@ namespace TheSwordOfSpring.EnemySystem
         private void Dead()
         {
             enemyAnimation.SetDieAnimation();
+            Destroy(gameObject, 3f);
 
+        }
+        private void FlipObject()
+        {
+
+            float localScaleX = Mathf.Abs(transform.localScale.x);
+            if (rb.velocity.x < 0)
+            {
+                transform.SetLocalScaleX(localScaleX * -1);
+            }
+            else if (rb.velocity.x > 0)
+            {
+                transform.SetLocalScaleX(localScaleX * 1);
+            }
         }
 
 

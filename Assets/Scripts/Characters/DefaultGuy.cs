@@ -11,12 +11,6 @@ namespace TheSwordOfSpring
             // Do shit after this line of code
             base.Start();
 
-
-            // construct the heart of farmer
-            var heartOfFarmer = InventoryItem.Create(StaticItemsHolder.Instance.HeartOfFarmer);
-            inventory.AddItem(heartOfFarmer);
-            Destroy(heartOfFarmer.gameObject, .1f);
-
         }
 
         private void Update()

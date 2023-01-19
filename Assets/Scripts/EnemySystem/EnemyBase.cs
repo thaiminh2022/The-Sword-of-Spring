@@ -4,7 +4,7 @@ using TheSwordOfSpring.StatSystem;
 
 namespace TheSwordOfSpring.EnemySystem
 {
-    public class EnemyBase : MonoBehaviour, IDamageable
+    public class EnemyBase : MonoBehaviour, IDamageable, IGetHealthSystem
     {
         [SerializeField]
         protected EnemyStartStats baseEnemy;
@@ -19,8 +19,6 @@ namespace TheSwordOfSpring.EnemySystem
         protected virtual void Start()
         {
             baseEnemy.Health.OnModifierChange += Health_OnModifierChange;
-            print("Start 1");
-
         }
         private void Health_OnModifierChange(object sender, ModifierEventArgs e)
         {
@@ -32,7 +30,7 @@ namespace TheSwordOfSpring.EnemySystem
             return GameObject.FindGameObjectWithTag("Player");
         }
 
-        protected void SetEnemyState(EnemyState newState)
+        protected virtual void SetEnemyState(EnemyState newState)
         {
             enemyState = newState;
         }
@@ -47,6 +45,11 @@ namespace TheSwordOfSpring.EnemySystem
         protected void DealDamage(GameObject target, float amount)
         {
             target.GetComponent<IDamageable>().Damage(amount);
+        }
+
+        public HealthSystem GetHealthSystem()
+        {
+            return healthSystem;
         }
     }
 }

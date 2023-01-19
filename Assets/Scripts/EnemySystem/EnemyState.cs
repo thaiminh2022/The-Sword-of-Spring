@@ -9,6 +9,7 @@ namespace TheSwordOfSpring.EnemySystem
         IDLE,
         ATTACK,
         RETREAT,
+        STUN,
         DEAD
     }
 }

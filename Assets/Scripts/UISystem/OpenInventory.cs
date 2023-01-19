@@ -1,5 +1,6 @@
 using UnityEngine;
 using TheSwordOfSpring.Modules;
+using TheSwordOfSpring.TimeSystem;
 
 namespace TheSwordOfSpring.UISystem
 {
@@ -20,9 +21,9 @@ namespace TheSwordOfSpring.UISystem
             {
                 if (inventorySwitch == false)
                 {
-
-
                     UIManager.Instance.SetInventoryActive(true);
+                    ChangeToUIMode();
+                    GameTimeManager.Pause();
                     inventorySwitch = true;
                 }
             }

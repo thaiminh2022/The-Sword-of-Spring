@@ -1,5 +1,5 @@
 using UnityEngine;
-using System.Collections.Generic;
+using TheSwordOfSpring.TimeSystem;
 using TMPro;
 using UnityEngine.UI;
 using TheSwordOfSpring.UISystem;
@@ -19,6 +19,7 @@ namespace TheSwordOfSpring.CharacterSystem.InventorySystemTM
             PickupableInventoryItem.OnItemPickUp += PickupableInventoryItem_OnItemPickUp;
             closeBtn.onClick.AddListener(() =>
             {
+                GameTimeManager.Resume();
                 nameText.SetText("");
                 descText.SetText("");
                 itemSpritePreview.sprite = null;
@@ -34,6 +35,7 @@ namespace TheSwordOfSpring.CharacterSystem.InventorySystemTM
 
         private void PickupableInventoryItem_OnItemPickUp(object sender, ItemScriptableObject itemBase)
         {
+            GameTimeManager.Pause();
             gameObject.SetActive(true);
             nameText.SetText(itemBase.name);
             descText.SetText(CreateItemDescString(itemBase));

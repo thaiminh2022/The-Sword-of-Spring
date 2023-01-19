@@ -96,10 +96,10 @@ GameObject:
   - component: {fileID: 8896066275183010944}
   - component: {fileID: 8896066275183010947}
   - component: {fileID: 8896066275183010946}
-  - component: {fileID: 8896066275183010957}
   - component: {fileID: 8896066275183010956}
   - component: {fileID: 8896066275183010959}
   - component: {fileID: 8896066275183010958}
+  - component: {fileID: 1937909874}
   m_Layer: 7
   m_Name: Skeleton
   m_TagString: Enemy
@@ -114,7 +114,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8896066275183010953}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -10, y: 2.72, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -216,22 +216,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &8896066275183010957
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8896066275183010953}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b35400d4f6a6bb84ca9ee43cd12137fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseEnemy: {fileID: 8896066275183010956}
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!114 &8896066275183010956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -299,3 +283,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.74689674, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1937909874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8896066275183010953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f3dd3872d1b64043b8f4a35d39dd4d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseEnemy: {fileID: 8896066275183010956}
+  projectileObject: {fileID: 1725016295554272094, guid: bcd9237de7677fa468620798b3390a3e, type: 3}

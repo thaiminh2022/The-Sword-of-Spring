@@ -436,7 +436,7 @@ namespace Redcode.Extensions
 
                     if (includeThis || !includeThis && child != transform)
                         siblings.Add(child);
-                }    
+                }
             }
             else
             {

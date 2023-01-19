@@ -5,7 +5,7 @@ namespace SmartConsole
         public string Text;
         public LogMessageTypes Type;
         public string[] ParametersNames;
-        
+
         public LogMessage(string text, LogMessageTypes type, string[] parametersNames = null)
         {
             Text = text;

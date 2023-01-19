@@ -54,5 +54,10 @@ namespace TheSwordOfSpring.CharacterSystem
         public float GetAtkRange() => AtkRange.Value;
 
         public float GetAtkSpeed() => AtkSpeed.Value;
+
+        public Sprite GetSprite()
+        {
+            return baseStat.sprite;
+        }
     }
 }

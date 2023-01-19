@@ -6,7 +6,7 @@ namespace TheSwordOfSpring.EffectsSystem
     public abstract class Effect : MonoBehaviour
     {
 
-        public void DestroySelf(float time)
+        public virtual void DestroySelf(float time)
         {
             Destroy(this, time);
         }

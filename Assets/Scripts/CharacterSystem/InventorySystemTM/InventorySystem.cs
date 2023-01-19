@@ -14,6 +14,21 @@ namespace TheSwordOfSpring.CharacterSystem.InventorySystemTM
             CharacterStartStats = characterStartStats;
             inventoryItems = new List<InventoryItem>();
         }
+        public InventorySystem(CharacterStartStats characterStartStats, InventoryDataScriptableObject holder)
+        {
+            CharacterStartStats = characterStartStats;
+
+            var inventoryItemsData = holder.GetInventoryItems();
+            inventoryItems = inventoryItemsData;
+
+            if (inventoryItemsData.Count > 0)
+            {
+                foreach (var item in inventoryItems)
+                {
+                    item.EquipItem(characterStartStats);
+                }
+            }
+        }
 
         public void AddItem(InventoryItem item, int amount = 1)
         {

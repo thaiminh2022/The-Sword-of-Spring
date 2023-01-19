@@ -10,9 +10,14 @@ namespace TheSwordOfSpring.TimeSystem
         private void Start()
         {
             TimeManager.OnNextHour += TimeManager_OnNextHour;
+            CalculateDegree();
         }
 
         private void TimeManager_OnNextHour(object sender, EventArgs args)
+        {
+            CalculateDegree();
+        }
+        private void CalculateDegree()
         {
             float normalizedHour = TimeManager.GetHourNormalize();
 
@@ -22,6 +27,7 @@ namespace TheSwordOfSpring.TimeSystem
             // print($"Hour: {TimeManager.Hour}, degree: {degree}");
             CurrentClockDegree = degree;
         }
+
         private void OnDestroy()
         {
             TimeManager.OnNextHour -= TimeManager_OnNextHour;

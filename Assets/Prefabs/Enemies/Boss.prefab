@@ -14,6 +14,9 @@ GameObject:
   - component: {fileID: 4188018367718102541}
   - component: {fileID: 4188018367718102542}
   - component: {fileID: 4188018367718102545}
+  - component: {fileID: 2094015908}
+  - component: {fileID: 2094015909}
+  - component: {fileID: 7264669366119560686}
   m_Layer: 7
   m_Name: Boss
   m_TagString: Enemy
@@ -28,7 +31,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4188018367718102544}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 11.11, y: 1.86, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
@@ -169,6 +172,60 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.74689674, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &2094015908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4188018367718102544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43cf0ac63cc45f84aa37b7a2dd1ec935, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseEnemy: {fileID: 2094015909}
+  bossScriptable: {fileID: 11400000, guid: 0fbf52b1b5cff564986f0eaf36119b44, type: 2}
+--- !u!114 &2094015909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4188018367718102544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc731b8830ae10b47a2ab42ade983ac4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseStat: {fileID: 11400000, guid: 0fbf52b1b5cff564986f0eaf36119b44, type: 2}
+  Health:
+    BaseValue: 0
+    MaxValue: 3.4028235e+38
+  Damage:
+    BaseValue: 0
+    MaxValue: 3.4028235e+38
+  AtkRange:
+    BaseValue: 0
+    MaxValue: 3.4028235e+38
+  AtkSpeed:
+    BaseValue: 0
+    MaxValue: 3.4028235e+38
+  MoveSpeed:
+    BaseValue: 0
+    MaxValue: 3.4028235e+38
+--- !u!114 &7264669366119560686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4188018367718102544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9f0089180fbbc94eb15c02719a6b4c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4188018368948468024
 GameObject:
   m_ObjectHideFlags: 0

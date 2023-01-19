@@ -10,7 +10,7 @@ namespace SmartConsole.Components
         [SerializeField] private Image m_IconImage;
         [SerializeField] private TextMeshProUGUI m_Text;
         [SerializeField] private Image m_BackgroundImage;
-        
+
         [SerializeField] private Sprite m_LogSprite;
         [SerializeField] private Sprite m_ErrorSprite;
         [SerializeField] private Sprite m_WarningSprite;
@@ -20,9 +20,9 @@ namespace SmartConsole.Components
         [SerializeField] private Color m_BackgroundColor1;
         [SerializeField] private Color m_BackgroundColor2;
         [SerializeField] private Color m_AutocompleteBackgroundColor;
-        
+
         private const string k_DateFormat = "hh:mm:ss";
-        
+
         public void SetText(string message, bool addDate = true)
         {
             if (addDate)
@@ -30,10 +30,10 @@ namespace SmartConsole.Components
                 string time = DateTime.Now.ToString(k_DateFormat);
                 m_Text.text = "[" + time + "] ";
             }
-            
+
             m_Text.text += message;
         }
-        
+
         public void SetTextParameter(string[] parameters)
         {
             string colorHex = ColorUtility.ToHtmlStringRGBA(m_ParameterColor);
@@ -63,7 +63,7 @@ namespace SmartConsole.Components
             m_BackgroundImage.color = color;
             even = !even;
         }
-        
+
         public void SetAutocompleteBackgroundColor()
         {
             m_BackgroundImage.color = m_AutocompleteBackgroundColor;

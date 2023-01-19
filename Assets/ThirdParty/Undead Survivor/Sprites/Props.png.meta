@@ -297,7 +297,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bullet_WTFISTHIS
+      name: Bullet_Scype
       rect:
         serializedVersion: 2
         x: 16
@@ -549,9 +549,9 @@ TextureImporter:
       Shovel: 143021600
       Rifle: -144335857
       Bullet 3: -537537479
-      Bullet_WTFISTHIS: 762804792
       Box: -38345435
       Exp 1: 1807624531
+      Bullet_Scype: 762804792
       Shotgun: 1772703093
       Exp 2: -1997803578
       Mag: 1997828774

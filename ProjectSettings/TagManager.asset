@@ -16,10 +16,10 @@ TagManager:
   - Player
   - Enemy
   - Item
-  - Props
-  - 
-  - 
-  - 
+  - Props/Normal
+  - Post Processing
+  - Projectiles
+  - Props/BossProps
   - 
   - 
   - 
@@ -40,6 +40,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Ground
+    uniqueID: 631235999
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

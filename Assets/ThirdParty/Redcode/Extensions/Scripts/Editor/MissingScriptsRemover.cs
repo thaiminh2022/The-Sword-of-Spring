@@ -10,7 +10,7 @@ public static class FindMissingScriptsRecursively
     [MenuItem("GameObject/Remove Missing Scripts")]
     private static void FindAndRemoveMissingInSelected()
     {
-        if (Mathf.Approximately(Time.unscaledTime, _lastCallTime)) 
+        if (Mathf.Approximately(Time.unscaledTime, _lastCallTime))
             return;
 
         var selected = Selection.gameObjects.SelectMany(go => go.GetComponentsInChildren<Transform>(true)).Select(t => t.gameObject);
@@ -68,7 +68,7 @@ public static class FindMissingScriptsRecursively
         {
             Undo.RegisterCompleteObjectUndo(source, "Remove missing scripts");
             GameObjectUtility.RemoveMonoBehavioursWithMissingScript(source);
-            
+
             removedComponentsCount += count;
             removedGameObjectsCount += 1;
         }

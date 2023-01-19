@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using TheSwordOfSpring.TimeSystem;
 
 namespace TheSwordOfSpring.UISystem
 {
@@ -20,7 +21,7 @@ namespace TheSwordOfSpring.UISystem
                 {
                     element.SetActive(false);
                 }
-
+                GameTimeManager.Resume();
                 UIManager.UsePlayerMode();
             }
         }

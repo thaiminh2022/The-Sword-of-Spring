@@ -18,7 +18,6 @@ namespace TheSwordOfSpring.CharacterSystem.InventorySystemTM
             }
             if (inventoryItemImage == null)
             {
-                transform.DestroyChilds();
                 inventoryItemImage = transform.GetChild(0).GetComponent<Image>();
             }
         }

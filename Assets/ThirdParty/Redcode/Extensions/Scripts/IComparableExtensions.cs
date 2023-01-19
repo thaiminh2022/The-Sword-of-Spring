@@ -14,7 +14,7 @@ namespace Redcode.Extensions
         /// <param name="aInclusive">Is the beginning of the interval included?</param>
         /// <param name="bInclusive">Is the end of the interval included?</param>
         /// <returns><see langword="true"/> if the <paramref name="value"/> is between <paramref name="a"/> and <paramref name="b"/>.</returns>
-        public static bool IsBetween<T>(this T value, T a, T b, bool aInclusive = true, bool bInclusive = true) where T: IComparable
+        public static bool IsBetween<T>(this T value, T a, T b, bool aInclusive = true, bool bInclusive = true) where T : IComparable
         {
             if (a.CompareTo(b) == 1)
             {

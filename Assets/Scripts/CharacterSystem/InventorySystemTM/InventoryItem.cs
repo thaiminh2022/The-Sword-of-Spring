@@ -4,9 +4,16 @@ using System.Collections.Generic;
 
 namespace TheSwordOfSpring.CharacterSystem.InventorySystemTM
 {
-    public class InventoryItem : MonoBehaviour
+
+    [System.Serializable]
+    public class InventoryItem
     {
         [SerializeField] protected ItemScriptableObject itemBase;
+
+        public InventoryItem(ItemScriptableObject itemBase)
+        {
+            this.itemBase = itemBase;
+        }
 
         public void EquipItem(CharacterStartStats character)
         {
@@ -45,16 +52,6 @@ namespace TheSwordOfSpring.CharacterSystem.InventorySystemTM
             return itemBase.GetBuffDatas();
         }
 
-        public static InventoryItem Create(ItemScriptableObject itemBase)
-        {
-            GameObject go = new GameObject();
-            var inventoryItem = go.AddComponent<InventoryItem>();
-            inventoryItem.itemBase = itemBase;
-            go.SetActive(false);
-
-            return inventoryItem;
-
-        }
 
     }
 

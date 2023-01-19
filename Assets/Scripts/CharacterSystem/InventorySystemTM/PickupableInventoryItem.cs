@@ -4,13 +4,19 @@ using TheSwordOfSpring.Modules;
 
 namespace TheSwordOfSpring.CharacterSystem.InventorySystemTM
 {
-    public class PickupableInventoryItem : InventoryItem, IInteractable
+    public class PickupableInventoryItem : MonoBehaviour, IInteractable
     {
+        [SerializeField] protected ItemScriptableObject itemBase;
         public static event EventHandler<ItemScriptableObject> OnItemPickUp;
 
+        private void Start()
+        {
+            // Pingpong loop for reasons
+            float defaultY = transform.position.y;
+            transform.LeanMoveLocalY(defaultY + .2f, .3f).setLoopPingPong().setEaseInOutSine();
+        }
         public bool Interact(object source)
         {
-            print($"{itemBase.name} has been interacted");
 
             // Add to inventory 
             if (source is GameObject)
@@ -19,15 +25,18 @@ namespace TheSwordOfSpring.CharacterSystem.InventorySystemTM
 
                 if (srcObject.TryGetComponent<CharacterBase>(out var characterBase))
                 {
-                    characterBase.GetInventory().AddItem(this, 1);
+                    var item = new InventoryItem(itemBase);
+
+                    characterBase.GetInventory().AddItem(item, 1);
                     OnItemPickUp?.Invoke(this, itemBase);
                     Destroy(gameObject, .1f);
                     return true;
                 }
             }
 
-            print($"{itemBase.name} is non pickupable");
             return false;
         }
+
+        public ItemScriptableObject GetItemBase() => itemBase;
     }
 }

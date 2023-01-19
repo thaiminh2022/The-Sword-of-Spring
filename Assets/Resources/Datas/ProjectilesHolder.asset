@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 32
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0500990e3e351a84daec11be12a9661f, type: 3}
+  m_Name: ProjectilesHolder
+  m_EditorClassIdentifier: 
+  shovelProjectile: {fileID: 1725016295554272094, guid: bcd9237de7677fa468620798b3390a3e, type: 3}
+  scytheProjectile: {fileID: 1725016295554272094, guid: 426a3124126e18a4987c4b8ab2227bf2, type: 3}
+  forkProjectile: {fileID: 1725016295554272094, guid: 5ec351abd95f1904aa7714d2f8a47b23, type: 3}

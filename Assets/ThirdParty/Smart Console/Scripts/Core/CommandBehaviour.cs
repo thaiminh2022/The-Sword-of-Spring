@@ -14,20 +14,20 @@ namespace SmartConsole
         private void GetCommandMethods()
         {
             var methods = GetType().GetMethods(
-                    BindingFlags.Public | 
-                    BindingFlags.NonPublic | 
-                    BindingFlags.Static | 
+                    BindingFlags.Public |
+                    BindingFlags.NonPublic |
+                    BindingFlags.Static |
                     BindingFlags.Instance);
-            
+
             for (int i = 0; i < methods.Length; i++)
             {
-                CommandAttribute commandAttribute = 
+                CommandAttribute commandAttribute =
                     Attribute.GetCustomAttribute(methods[i], typeof(CommandAttribute)) as CommandAttribute;
-                
+
                 if (commandAttribute != null)
                 {
                     var command = new Command(this, methods[i]);
-                    
+
                     if (!Command.List.Exists(cmd => cmd.MethodInfo.Name == methods[i].Name))
                     {
                         Command.List.Add(command);

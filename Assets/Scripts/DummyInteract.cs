@@ -1,15 +1,21 @@
 using UnityEngine;
 using TheSwordOfSpring.Modules;
+using TheSwordOfSpring.IndicatorSystem;
 
 namespace TheSwordOfSpring
 {
-    public class DummyInteract : MonoBehaviour, IInteractable
-
+    public class DummyInteract : MonoBehaviour
     {
-        public bool Interact(object source)
+        private void Start()
         {
-            // Interaction succeed
-            return true;
+            Vector2 position = new Vector2(-3, 0);
+            IndicatorManager.CreateCircleIndicator(position, 1f, 999f);
+        }
+
+        private void OnDrawGizmosSelected()
+        {
+            Gizmos.color = Color.magenta;
+            Gizmos.DrawWireSphere(transform.position, 1f);
         }
     }
 }

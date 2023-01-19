@@ -17,6 +17,9 @@ namespace TheSwordOfSpring.CharacterSystem
         [SerializeField]
         protected CharacterStartStats baseCharacter;
 
+        [SerializeField]
+        protected InventoryDataScriptableObject inventoryData;
+
         protected HealthSystem healthSystem;
         protected InventorySystem inventory;
 
@@ -30,10 +33,9 @@ namespace TheSwordOfSpring.CharacterSystem
         private void Awake()
         {
             inputActions = new PlayerInputActions();
-            print(baseCharacter.Health.BaseValue);
 
             healthSystem = new HealthSystem(baseCharacter.Health.BaseValue);
-            inventory = new InventorySystem(baseCharacter);
+            inventory = new InventorySystem(baseCharacter, inventoryData);
         }
         protected virtual void Start()
         {
