@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using UnityEngine;
+
 
 namespace TheSwordOfSpring.StatSystem
 {
@@ -137,6 +139,7 @@ namespace TheSwordOfSpring.StatSystem
             }
             // Clamp final value
             finalValue = Math.Clamp(finalValue, float.MinValue + 1, MaxValue);
+            Debug.Log($"Final value: {finalValue}");
             // Workaround for float calculation errors, like displaying 12.00001 instead of 12
             return (float)Math.Round(finalValue, 4);
         }

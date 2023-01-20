@@ -1,3 +1,4 @@
+using System.Reflection;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -53,6 +54,7 @@ namespace TheSwordOfSpring.CharacterSystem.InventorySystemTM
 
         public List<InventoryItem> GetItems()
         {
+            inventoryItems.ForEach(x => Debug.Log(x.GetItemBase().name));
             return inventoryItems;
         }
 

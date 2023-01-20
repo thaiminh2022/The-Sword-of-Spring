@@ -5,6 +5,7 @@ using TheSwordOfSpring.Modules;
 using TheSwordOfSpring.CharacterSystem.InventorySystemTM;
 using TheSwordOfSpring.TimeSystem;
 using System;
+using TheSwordOfSpring.SceneSystem;
 
 namespace TheSwordOfSpring.CharacterSystem
 {
@@ -44,6 +45,7 @@ namespace TheSwordOfSpring.CharacterSystem
 
             baseCharacter.Health.OnModifierChange += Health_OnModifierChange;
             TimeManager.OnDay += TimeManager_OnDay;
+            healthSystem.OnDead += HealthSystem_OnDead;
         }
 
         private void Health_OnModifierChange(object sender, ModifierEventArgs e)
@@ -54,6 +56,11 @@ namespace TheSwordOfSpring.CharacterSystem
         {
             healthSystem.HealComplete();
         }
+        private void HealthSystem_OnDead(object sender, EventArgs e)
+        {
+            ScenesManager.SwitchScene(SceneNames.RestartScene);
+        }
+
 
         public HealthSystem GetHealthSystem()
         {
@@ -83,6 +90,8 @@ namespace TheSwordOfSpring.CharacterSystem
         private void OnDestroy()
         {
             baseCharacter.Health.OnModifierChange -= Health_OnModifierChange;
+            healthSystem.OnDead -= HealthSystem_OnDead;
+            TimeManager.OnDay -= TimeManager_OnDay;
         }
 
         public void Damage(float damage)

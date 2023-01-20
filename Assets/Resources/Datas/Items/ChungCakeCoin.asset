@@ -23,7 +23,7 @@ MonoBehaviour:
     Amount: 0
   damageBuff:
     ModType: 100
-    Amount: 0
+    Amount: 1
   atkRangeBuff:
     ModType: 100
     Amount: 0
@@ -31,5 +31,5 @@ MonoBehaviour:
     ModType: 100
     Amount: 0.6
   moveSpeedBuff:
-    ModType: 200
-    Amount: -1.5
+    ModType: 100
+    Amount: -2

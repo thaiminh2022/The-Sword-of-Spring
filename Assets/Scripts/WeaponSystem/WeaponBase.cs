@@ -11,7 +11,7 @@ namespace TheSwordOfSpring.WeaponSystem
 
         [SerializeField] private Transform attackPoint;
 
-        private float atkRange = 3;
+        private float atkRange = 1f;
 
         public WeaponScriptableObject GetWeaponScriptableObject()
         {
@@ -20,35 +20,29 @@ namespace TheSwordOfSpring.WeaponSystem
 
         public virtual bool Attack(float atkRange, float atkDamage)
         {
-            Collider2D collider = Physics2D.OverlapCircle(Camera.main.ScreenToWorldPoint(Input.mousePosition), 1f);
             this.atkRange = atkRange;
-
-            if (collider != null && collider.GetComponent<IDamageable>() != null)
+            Physics2D
+            .OverlapCircleAll(attackPoint.position, atkRange)
+            .ToList()
+            .FindAll(item =>
             {
-                Physics2D
-                .OverlapCircleAll(attackPoint.position, atkRange)
-                .ToList()
-                .FindAll(item =>
+                if (item.gameObject == transform.root.gameObject)
                 {
-                    if (item.gameObject == transform.root.gameObject)
-                    {
-                        return false;
-                    }
+                    return false;
+                }
 
-                    return item.TryGetComponent<IDamageable>(out var _);
+                return item.TryGetComponent<IDamageable>(out var _);
 
-                })
-                .ForEach(damageableCollider =>
-                {
-                    damageableCollider
-                    .GetComponent<IDamageable>()
-                    .Damage(atkDamage);
-                });
+            })
+            .ForEach(damageableCollider =>
+            {
+                damageableCollider
+                .GetComponent<IDamageable>()
+                .Damage(atkDamage);
+            });
 
-                return true;
-            }
-            print("I ATTACK NOTHING");
-            return false;
+
+            return true;
 
         }
 

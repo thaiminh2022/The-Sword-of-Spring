@@ -86,12 +86,6 @@ namespace TheSwordOfSpring.SpawnerSystem
             {
                 Vector2 spawnPosition = RandomPositionBtw2Vector(startSpawnPosition, endSpawnPosition);
 
-                // If the position is occupied by a collider, find a new one
-                while (IsOccupied(spawnPosition))
-                {
-                    spawnPosition = RandomPositionBtw2Vector(startSpawnPosition, endSpawnPosition);
-                }
-
                 OnSpawnEnemy?.Invoke(this, spawnEnemy);
                 Instantiate(spawnEnemy, spawnPosition, Quaternion.identity);
 

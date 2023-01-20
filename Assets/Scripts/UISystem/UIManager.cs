@@ -13,6 +13,8 @@ namespace TheSwordOfSpring.UISystem
         private static InputMode inputMode;
 
         [SerializeField] public GameObject inventoryUI;
+        [SerializeField] public GameObject pauseUI;
+
         private void Awake()
         {
             Instance = this;
@@ -44,6 +46,10 @@ namespace TheSwordOfSpring.UISystem
         public void SetInventoryActive(bool active)
         {
             inventoryUI.SetActive(active);
+        }
+        public void SetPauseUIActive(bool active)
+        {
+            pauseUI.SetActive(active);
         }
 
 

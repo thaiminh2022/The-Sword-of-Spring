@@ -20,7 +20,7 @@ MonoBehaviour:
   atkRange: 1
   atkSpeed: 1
   moveSpeed: 0.5
-  waitTimeBtwAttack: 3
+  waitTimeBtwAttack: 1
   projectilesIndicateTime: 1
   projectTilesDamage: 2
   projectilesAmount: 20
@@ -29,6 +29,14 @@ MonoBehaviour:
   flashAttackIndicatorTime: 1
   shockWaveRadius: 2
   shockWaveDamage: 3
-  shoveWaveIndicatorTime: 2
+  shoveWaveIndicatorTime: 1
   shockWaveAmount: 5
   shockWaveRetreatDistance: 8
+  boomDashRadius: 3
+  boomDashDamage: 5
+  boomDashIndicatorTime: 1
+  closeBoomAmount: 2
+  closeBoomRadius: 2
+  closeBoomDamage: 3
+  closeBoomIndicatorTime: 1
+  closeBoomTimeOffset: 0.5

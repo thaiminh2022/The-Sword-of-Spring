@@ -22,7 +22,7 @@ MonoBehaviour:
     ModType: 100
     Amount: 0
   damageBuff:
-    ModType: 200
+    ModType: 100
     Amount: 1
   atkRangeBuff:
     ModType: 100

@@ -28,7 +28,7 @@ MonoBehaviour:
     ModType: 100
     Amount: 0
   atkSpeedBuff:
-    ModType: 200
+    ModType: 100
     Amount: 50
   moveSpeedBuff:
     ModType: 100

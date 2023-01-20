@@ -5,10 +5,11 @@ using System.Collections;
 using UnityRandom = UnityEngine.Random;
 using TheSwordOfSpring.EffectsSystem;
 using Redcode.Extensions;
+using System.Linq;
 
 namespace TheSwordOfSpring.EnemySystem
 {
-    public class BossEnemyP1 : EnemyBase, IStunable, ITriggerable
+    public class BossEnemyP1 : EnemyBase, IStunable, ITriggerable, ITriggerP2
     {
         [SerializeField]
         private BossScriptableObject bossScriptable;
@@ -19,6 +20,9 @@ namespace TheSwordOfSpring.EnemySystem
         private Transform player;
         private bool isDead = false;
         private bool isStun = false;
+        private bool useP2Attacks = false;
+        private bool canAttack = false;
+
 
         BossEnemyP1AttacksHandler attacksHandler;
         private Vector3 startPosition;
@@ -36,12 +40,18 @@ namespace TheSwordOfSpring.EnemySystem
             healthSystem.OnDead += HealthSystem_OnDead;
             healthSystem.OnDamaged += HealthSystem_OnDamage;
 
-            startPosition = transform.position;
+            startPosition = Vector3.zero;
 
         }
 
         public void Trigger()
         {
+            canAttack = true;
+            WarmUp();
+        }
+        public void StopTrigger()
+        {
+            canAttack = false;
             WarmUp();
         }
 
@@ -64,12 +74,17 @@ namespace TheSwordOfSpring.EnemySystem
         }
         private void WarmUp()
         {
+            if (canAttack == false)
+                return;
+
             HandleAttack();
         }
         private IEnumerator Wait(float extraTime)
         {
-            yield return new WaitForSeconds(bossScriptable.waitTimeBtwAttack + extraTime);
-            HandleAttack();
+            // Offset time for each attack
+            float graceTime = .5f;
+            yield return new WaitForSeconds(bossScriptable.waitTimeBtwAttack + extraTime + graceTime);
+            WarmUp();
         }
 
         private void HandleAttack()
@@ -79,7 +94,7 @@ namespace TheSwordOfSpring.EnemySystem
                 return;
             }
 
-            BossAttacks chosenAttack = (BossAttacks)ChooseRandomAttack();
+            BossAttacks chosenAttack = ChooseRandomAttack();
             print(chosenAttack.ToString());
 
             StartCoroutine(Attack(chosenAttack));
@@ -87,6 +102,11 @@ namespace TheSwordOfSpring.EnemySystem
         private IEnumerator Attack(BossAttacks attackType)
         {
             yield return new WaitUntil(() => isStun == false);
+
+            if (!canAttack)
+            {
+                yield break;
+            }
 
             float extraTime = 0;
             switch (attackType)
@@ -139,18 +159,49 @@ namespace TheSwordOfSpring.EnemySystem
                     extraTime = bossScriptable.atkSpeed;
 
                     break;
+                case BossAttacks.BoomDash:
+                    attacksHandler.HandleBoomDashAttack(
+                        player.position,
+                        bossScriptable.boomDashIndicatorTime,
+                        bossScriptable.boomDashDamage,
+                        bossScriptable.boomDashRadius
+                    );
+                    extraTime = bossScriptable.boomDashIndicatorTime;
+                    break;
+                case BossAttacks.CloseBoom:
+                    attacksHandler
+                    .HandleCloseBoomAttack(
+                        bossScriptable.closeBoomAmount,
+                        bossScriptable.shoveWaveIndicatorTime,
+                        bossScriptable.closeBoomRadius,
+                        bossScriptable.closeBoomDamage,
+                        bossScriptable.closeBoomTimeOffset
+                    );
+                    extraTime =
+                    bossScriptable.closeBoomIndicatorTime + bossScriptable.closeBoomTimeOffset * bossScriptable.closeBoomAmount;
+
+                    break;
                 default:
                     break;
             }
 
             StartCoroutine(Wait(extraTime));
         }
-        private int ChooseRandomAttack()
+        private BossAttacks ChooseRandomAttack()
         {
             Array enumsValue = Enum.GetValues(typeof(BossAttacks));
-            int index = UnityRandom.Range(0, enumsValue.Length);
 
-            return index;
+            BossAttacks returnAttack = BossAttacks.ProjectilesBom;
+            if (!useP2Attacks)
+            {
+                returnAttack = enumsValue.Cast<BossAttacks>().Where(attack => (int)attack < 4).GetRandomElement();
+            }
+            else
+            {
+                returnAttack = enumsValue.Cast<BossAttacks>().GetRandomElement();
+            }
+
+            return returnAttack;
         }
         private void MoveTowardsPosition(Vector2 position)
         {
@@ -205,6 +256,11 @@ namespace TheSwordOfSpring.EnemySystem
             isStun = false;
         }
 
+        public void TriggerP2(bool trigger)
+        {
+            useP2Attacks = trigger;
+        }
+
 
     }
 }
@@ -223,4 +279,12 @@ public enum BossAttacks
     ShockwaveHit,
     NormalAttack,
 
+    //! Phase 2
+    BoomDash = 4,
+    CloseBoom = 5,
+
+
+
+
 }
+

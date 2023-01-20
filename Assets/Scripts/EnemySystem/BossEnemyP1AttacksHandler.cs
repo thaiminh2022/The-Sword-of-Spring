@@ -4,6 +4,7 @@ using TheSwordOfSpring.Misc;
 using TheSwordOfSpring.IndicatorSystem;
 using System.Collections;
 using TheSwordOfSpring.HealthSystemTM;
+using System.Collections.Generic;
 
 namespace TheSwordOfSpring.EnemySystem
 {
@@ -116,6 +117,38 @@ namespace TheSwordOfSpring.EnemySystem
             }
         }
 
+        public void HandleBoomDashAttack(Vector3 target, float timeBeforeHit, float damage, float radius)
+        {
+            var Init = BoomDashAttack.Create(transform, target, timeBeforeHit, damage, radius);
+            Init?.Invoke();
+            IndicatorManager.CreateCircleIndicator(target, radius, timeBeforeHit);
+        }
+        public void HandleCloseBoomAttack(int amount, float timeBeforeHit, float radius, float damage, float timeOffSet)
+        {
+            List<Vector3> positions = new List<Vector3>();
+
+            for (int i = 0; i < amount; i++)
+            {
+                Vector3 offsetX = new Vector3(radius * 2 * (i + 1), 0, 0);
+                Vector3 offsetY = new Vector3(0, radius * 2 * (i + 1), 0);
+
+                Vector3[] positionOffset = new Vector3[]{
+                    transform.position + offsetX,
+                    transform.position - offsetX,
+                    transform.position + offsetY,
+                    transform.position - offsetY
+                };
+
+                foreach (var position in positionOffset)
+                {
+                    IndicatorManager.CreateCircleIndicator(position, radius, timeBeforeHit);
+                    positions.Add(position);
+                }
+            }
+
+            var Init = CloseBoomAttack.Create(transform, positions.ToArray(), damage, timeBeforeHit, radius, timeOffSet);
+            Init?.Invoke();
+        }
 
 
     }

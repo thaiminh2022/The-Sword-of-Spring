@@ -28,6 +28,19 @@ namespace TheSwordOfSpring.EnemySystem
         public int shockWaveAmount;
         public float shockWaveRetreatDistance;
 
+        [Header("Boom Dash Hit")]
+        public float boomDashRadius;
+        public float boomDashDamage;
+        public float boomDashIndicatorTime;
+
+        [Header("Close Boom")]
+        public int closeBoomAmount;
+        public float closeBoomRadius;
+        public float closeBoomDamage;
+        public float closeBoomIndicatorTime;
+        public float closeBoomTimeOffset;
+
+
 
 
     }

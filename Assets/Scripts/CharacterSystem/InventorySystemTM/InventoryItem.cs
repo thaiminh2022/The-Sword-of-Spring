@@ -27,6 +27,8 @@ namespace TheSwordOfSpring.CharacterSystem.InventorySystemTM
                 character.AtkSpeed.AddModifier(new StatModifier(itemBase.atkSpeedBuff.Amount, itemBase.atkSpeedBuff.ModType));
             if (itemBase.moveSpeedBuff.Amount != 0)
                 character.MoveSpeed.AddModifier(new StatModifier(itemBase.moveSpeedBuff.Amount, itemBase.moveSpeedBuff.ModType));
+            if (itemBase.damageBuff.Amount != 0)
+                character.Damage.AddModifier(new StatModifier(itemBase.damageBuff.Amount, itemBase.damageBuff.ModType));
         }
         public void RemoveItem(CharacterStartStats character)
         {
@@ -40,6 +42,8 @@ namespace TheSwordOfSpring.CharacterSystem.InventorySystemTM
                 character.AtkSpeed.RemoveAllModifiersFromSource(this);
             if (itemBase.moveSpeedBuff.Amount != 0)
                 character.MoveSpeed.RemoveAllModifiersFromSource(this);
+            if (itemBase.damageBuff.Amount != 0)
+                character.Damage.RemoveAllModifiersFromSource(this);
         }
 
         public ItemScriptableObject GetItemBase()

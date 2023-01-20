@@ -4,7 +4,7 @@ namespace TheSwordOfSpring.TimeSystem
 
     public class GameTimeManager
     {
-        private static float defaultSimulationTime = 1;
+        public const float defaultSimulationTime = 1;
         private static float lastSimulationTime = 1;
 
         public static void Pause()

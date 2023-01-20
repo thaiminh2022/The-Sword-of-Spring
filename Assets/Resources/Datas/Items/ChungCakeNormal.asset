@@ -31,5 +31,5 @@ MonoBehaviour:
     ModType: 100
     Amount: 0.3
   moveSpeedBuff:
-    ModType: 200
+    ModType: 100
     Amount: -1

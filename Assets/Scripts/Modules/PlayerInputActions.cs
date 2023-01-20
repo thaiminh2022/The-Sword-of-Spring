@@ -73,11 +73,20 @@ namespace TheSwordOfSpring.Modules
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PauseGame"",
+                    ""type"": ""Button"",
+                    ""id"": ""39895403-6ced-460b-ba73-efb7a7288eb5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
                 {
-                    ""name"": ""2D Vector"",
+                    ""name"": ""WSAD"",
                     ""id"": ""24328862-eddf-4c88-a652-738d710b01a5"",
                     ""path"": ""2DVector"",
                     ""interactions"": """",
@@ -132,6 +141,61 @@ namespace TheSwordOfSpring.Modules
                     ""isPartOfComposite"": true
                 },
                 {
+                    ""name"": ""UDLR"",
+                    ""id"": ""38ce4ee9-9aa3-43ae-aab1-a6fa5b99a75b"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""KeyboardInput"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""50d80fd6-22a9-446b-ab24-62192b5e5c16"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""KeyboardInput"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""7089e9d3-4937-4e6c-902a-f867c5525b89"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""KeyboardInput"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""72c46f2b-ad28-43e8-a4b6-e16a6796e6e4"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""KeyboardInput"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""dc57855c-9051-4e51-8b26-ae1fe60e666b"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""KeyboardInput"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
                     ""name"": """",
                     ""id"": ""230cda3f-f2dc-4ae2-8725-b600985643a4"",
                     ""path"": ""<Mouse>/rightButton"",
@@ -172,6 +236,17 @@ namespace TheSwordOfSpring.Modules
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""OpenInventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""16e71185-c107-4597-b412-f4d99b5316d6"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PauseGame"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -227,6 +302,7 @@ namespace TheSwordOfSpring.Modules
             m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
             m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
             m_Player_OpenInventory = m_Player.FindAction("OpenInventory", throwIfNotFound: true);
+            m_Player_PauseGame = m_Player.FindAction("PauseGame", throwIfNotFound: true);
             // UIMap
             m_UIMap = asset.FindActionMap("UIMap", throwIfNotFound: true);
             m_UIMap_ExitUIMode = m_UIMap.FindAction("ExitUIMode", throwIfNotFound: true);
@@ -294,6 +370,7 @@ namespace TheSwordOfSpring.Modules
         private readonly InputAction m_Player_Interact;
         private readonly InputAction m_Player_Attack;
         private readonly InputAction m_Player_OpenInventory;
+        private readonly InputAction m_Player_PauseGame;
         public struct PlayerActions
         {
             private @PlayerInputActions m_Wrapper;
@@ -303,6 +380,7 @@ namespace TheSwordOfSpring.Modules
             public InputAction @Interact => m_Wrapper.m_Player_Interact;
             public InputAction @Attack => m_Wrapper.m_Player_Attack;
             public InputAction @OpenInventory => m_Wrapper.m_Player_OpenInventory;
+            public InputAction @PauseGame => m_Wrapper.m_Player_PauseGame;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -327,6 +405,9 @@ namespace TheSwordOfSpring.Modules
                     @OpenInventory.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnOpenInventory;
                     @OpenInventory.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnOpenInventory;
                     @OpenInventory.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnOpenInventory;
+                    @PauseGame.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPauseGame;
+                    @PauseGame.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPauseGame;
+                    @PauseGame.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPauseGame;
                 }
                 m_Wrapper.m_PlayerActionsCallbackInterface = instance;
                 if (instance != null)
@@ -346,6 +427,9 @@ namespace TheSwordOfSpring.Modules
                     @OpenInventory.started += instance.OnOpenInventory;
                     @OpenInventory.performed += instance.OnOpenInventory;
                     @OpenInventory.canceled += instance.OnOpenInventory;
+                    @PauseGame.started += instance.OnPauseGame;
+                    @PauseGame.performed += instance.OnPauseGame;
+                    @PauseGame.canceled += instance.OnPauseGame;
                 }
             }
         }
@@ -399,6 +483,7 @@ namespace TheSwordOfSpring.Modules
             void OnInteract(InputAction.CallbackContext context);
             void OnAttack(InputAction.CallbackContext context);
             void OnOpenInventory(InputAction.CallbackContext context);
+            void OnPauseGame(InputAction.CallbackContext context);
         }
         public interface IUIMapActions
         {

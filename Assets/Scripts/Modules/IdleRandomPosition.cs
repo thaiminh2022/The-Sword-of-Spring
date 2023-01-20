@@ -1,4 +1,5 @@
 using UnityEngine;
+using Redcode.Extensions;
 
 namespace TheSwordOfSpring.Modules
 {
@@ -12,7 +13,6 @@ namespace TheSwordOfSpring.Modules
         [Header("Visual")]
         [SerializeField] bool drawGizmos;
 
-        private IStatComponent stats;
         private Vector2 moveToPosition;
         private float waitTime;
 
@@ -20,7 +20,6 @@ namespace TheSwordOfSpring.Modules
 
         void Start()
         {
-            stats = GetComponent<IStatComponent>();
             moveToPosition = ChooseNewPosition();
 
             initialPosition = transform.position;
@@ -28,10 +27,11 @@ namespace TheSwordOfSpring.Modules
 
         void Update()
         {
+            Flip();
 
             if (Vector2.Distance(transform.position, moveToPosition) > offset)
             {
-                transform.position = Vector2.MoveTowards(transform.position, moveToPosition, stats.GetSpeed() * Time.deltaTime);
+                transform.position = Vector2.MoveTowards(transform.position, moveToPosition, 1f * Time.deltaTime);
                 return;
             }
             if (waitTime > 0)
@@ -46,7 +46,7 @@ namespace TheSwordOfSpring.Modules
 
         private Vector2 ChooseNewPosition()
         {
-            return Random.insideUnitCircle * stats.GetViewRange() + initialPosition;
+            return Random.insideUnitCircle * 3f + initialPosition;
         }
 
         private void OnDrawGizmosSelected()
@@ -57,6 +57,21 @@ namespace TheSwordOfSpring.Modules
             Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(moveToPosition, offset);
 
+        }
+
+        private void Flip()
+        {
+            float dirX = (moveToPosition - (Vector2)transform.position).normalized.x;
+            float scaleX = Mathf.Abs(transform.localScale.x);
+
+            if (dirX > 0)
+            {
+                transform.SetLocalScaleX(scaleX);
+            }
+            else if (dirX < 0)
+            {
+                transform.SetLocalScaleX(scaleX * -1);
+            }
         }
     }
 }

@@ -7,9 +7,12 @@ onBoardingDoNotAskAgain = true
 showPackageIndexes = false
 showStatusBar = false
 scopes = {
-	"last_search.DD5CDD96" = "h:Player"
+	"last_search.DD5CDD96" = "Profiler"
 	"OpenInspectorPreview.DD5CDD96" = "1"
-	"currentGroup.DD5CDD96" = "scene"
+	"currentGroup.DD5CDD96" = "all"
+	"last_search.DA949528" = "BossI"
+	"OpenInspectorPreview.DA949528" = "0"
+	"currentGroup.DA949528" = "all"
 }
 providers = {
 	adb = {
@@ -56,6 +59,7 @@ providers = {
 objectSelectors = {
 }
 recentSearches = [
+	"P"
 ]
 searchItemFavorites = [
 ]

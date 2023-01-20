@@ -39,6 +39,10 @@ namespace TheSwordOfSpring.CharacterSystem
             return inputActions.Player.OpenInventory.IsPressed();
         }
 
+        public bool PauseUI()
+        {
+            return inputActions.Player.PauseGame.IsPressed();
+        }
     }
 }
 

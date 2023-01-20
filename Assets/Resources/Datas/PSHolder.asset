@@ -2,7 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!114 &11400000
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 32
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -15,4 +15,4 @@ MonoBehaviour:
   Fire_PS: {fileID: 6293429685429735857, guid: a4d28c61836f8904a8ed0cb989c0f8fb, type: 3}
   Stun_PS: {fileID: 0}
   Explosion_PS: {fileID: 3452496746483643986, guid: d10af5f2c558d334ebef0e19397a3e46, type: 3}
-  Dash_PS: {fileID: 6293429685429735857, guid: a4d28c61836f8904a8ed0cb989c0f8fb, type: 3}
+  Dash_PS: {fileID: 6907738615293784752, guid: 71e87ddcd02859b41a424f4dafd70347, type: 3}

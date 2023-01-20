@@ -33,6 +33,8 @@ namespace TheSwordOfSpring.HealthSystemTM
         private float healthMax;
         private float health;
 
+        private bool invincible = false;
+
         /// <summary>
         /// Construct a HealthSystem, receives the health max and sets current health to that value
         /// </summary>
@@ -71,6 +73,9 @@ namespace TheSwordOfSpring.HealthSystemTM
         /// </summary>
         public void Damage(float amount)
         {
+            if (invincible == true)
+                return;
+
             health -= amount;
             if (health < 0)
             {
@@ -84,6 +89,10 @@ namespace TheSwordOfSpring.HealthSystemTM
                 Die();
             }
         }
+
+        public bool IsInvincible() => invincible;
+        public void SetInvincible(bool newState) => invincible = newState;
+
 
         /// <summary>
         /// Kill this HealthSystem

@@ -28,6 +28,8 @@ namespace TheSwordOfSpring.CharacterSystem.InventorySystemTM
                 buffDatas.Add(new BuffData("AtkRange", atkRangeBuff.Amount));
             if (healthBuff.Amount != 0)
                 buffDatas.Add(new BuffData("Health", healthBuff.Amount));
+            if (damageBuff.Amount != 0)
+                buffDatas.Add(new BuffData("Damage", damageBuff.Amount));
             if (viewRangeBuff.Amount != 0)
                 buffDatas.Add(new BuffData("ViewRange", viewRangeBuff.Amount));
             if (atkSpeedBuff.Amount != 0)

@@ -1,3 +1,5 @@
+using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,6 +10,18 @@ namespace TheSwordOfSpring.SceneSystem
         public static void SwitchScene(SceneNames newScene)
         {
             SceneManager.LoadScene(newScene.ToString());
+        }
+        public static void SwitchScene(string name)
+        {
+            string[] availableNames = Enum.GetNames(typeof(SceneNames));
+            if (availableNames.ToList().Contains(name))
+            {
+                SceneManager.LoadScene(name);
+            }
+            else
+            {
+                Debug.LogError("NO SCENE HAS THAT NAME WTF");
+            }
         }
         public static void RestartCurrentScene()
         {
@@ -20,11 +34,11 @@ namespace TheSwordOfSpring.SceneSystem
 
         public static void ToRestartScene()
         {
-            SwitchScene(SceneNames.Restart);
+            SwitchScene(SceneNames.RestartScene);
         }
         public static void ToVictoryScene()
         {
-            SwitchScene(SceneNames.Victory);
+            SwitchScene(SceneNames.VictoryScene);
         }
         public static void ToBossIScene()
         {
@@ -33,6 +47,10 @@ namespace TheSwordOfSpring.SceneSystem
         public static void ToMainGameScene()
         {
             SwitchScene(SceneNames.MainGame);
+        }
+        public static void ToStartScene()
+        {
+            SwitchScene(SceneNames.StartScene);
         }
 
         public static string GetSceneName()
@@ -46,8 +64,8 @@ namespace TheSwordOfSpring.SceneSystem
     {
         MainGame,
         BossI,
-        Start,
-        Restart,
-        Victory,
+        StartScene,
+        RestartScene,
+        VictoryScene,
     }
 }

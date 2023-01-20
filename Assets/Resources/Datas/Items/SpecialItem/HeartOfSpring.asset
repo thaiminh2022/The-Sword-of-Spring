@@ -13,23 +13,24 @@ MonoBehaviour:
   m_Name: HeartOfSpring
   m_EditorClassIdentifier: 
   name: "Tr\xE1i Tim M\xF9a Xu\xE2n"
-  desc: 
-  sprite: {fileID: 0}
+  desc: "M\xF9a Xu\xE2n sang ta ch\xFAc nhau, n\u0103m m\u1EDBi \u0111\u1EBFn bao
+    hi v\u1ECDng"
+  sprite: {fileID: 21300000, guid: 661bf4c088acf7040b58042290cdfe77, type: 3}
   healthBuff:
-    ModType: 0
-    Amount: 0
+    ModType: 100
+    Amount: 20
   viewRangeBuff:
-    ModType: 0
+    ModType: 100
     Amount: 0
   damageBuff:
-    ModType: 0
-    Amount: 0
+    ModType: 100
+    Amount: 20
   atkRangeBuff:
-    ModType: 0
+    ModType: 100
     Amount: 0
   atkSpeedBuff:
-    ModType: 0
-    Amount: 0
+    ModType: 100
+    Amount: 20
   moveSpeedBuff:
-    ModType: 0
+    ModType: 100
     Amount: 0
