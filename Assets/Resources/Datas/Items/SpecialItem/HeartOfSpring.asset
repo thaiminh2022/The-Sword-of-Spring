@@ -14,7 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: "Tr\xE1i Tim M\xF9a Xu\xE2n"
   desc: "M\xF9a Xu\xE2n sang ta ch\xFAc nhau, n\u0103m m\u1EDBi \u0111\u1EBFn bao
-    hi v\u1ECDng"
+    hi v\u1ECDng.\nT\u1EEB x\u01B0a, c\xE2y mai \u0111\xE3 g\u1EAFn b\xF3 v\u1EDBi
+    l\xE0ng qu\xEA ru\u1ED9ng v\u01B0\u1EDDn x\u1EE9 s\u1EDF Vi\u1EC7t Nam, g\u1EAFn
+    b\xF3 v\u1EDBi con ng\u01B0\u1EDDi t\u1EEB l\xFAc t\u1ED5 ti\xEAn khai \u0111\u1EA5t
+    l\u1EADp l\xE0ng \u0111\u1EC3 sinh s\u1ED1ng. C\xE2y \u01B0\u01A1m m\u1EA7m,
+    c\u1EAFm r\u1EC5 s\xE2u trong \u0111\u1EA5t, ch\u1EB3ng ch\u1ECBu khu\u1EA5t
+    ph\u1EE5c b\u1EDFi gi\xF3 b\xE3o, d\xF9 th\u1EDDi ti\u1EBFt c\xF3 nghi\u1EC7t
+    ng\xE3 \u0111\u1EBFn m\u1EA5y v\u1EABn b\u1EC1n b\u1EC9 theo n\u0103m th\xE1ng,
+    v\u1EABn tr\xE0n \u0111\u1EA7y s\u1EE9c s\u1ED1ng n\u1EDF hoa \u0111\u1EA7u xu\xE2n."
   sprite: {fileID: 21300000, guid: 661bf4c088acf7040b58042290cdfe77, type: 3}
   healthBuff:
     ModType: 100

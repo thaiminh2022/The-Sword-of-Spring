@@ -22,7 +22,7 @@ namespace TheSwordOfSpring.UISystem
             });
             restartButton.onClick.AddListener(() =>
             {
-                ScenesManager.ToBossIScene();
+                ScenesManager.ToMainGameScene();
             });
 
         }

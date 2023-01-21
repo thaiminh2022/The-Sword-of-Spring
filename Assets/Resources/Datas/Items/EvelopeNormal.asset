@@ -13,7 +13,18 @@ MonoBehaviour:
   m_Name: EvelopeNormal
   m_EditorClassIdentifier: 
   name: "Bao L\xEC X\xEC"
-  desc: "Ch\u1EC9 l\xE0 bao l\xEC x\xEC b\xECnh th\u01B0\u1EDDng tho"
+  desc: " L\xEC x\xEC l\xE0 t\u1EEB phi\xEAn \xE2m c\u1EE7a L\u1EE3i Th\u1ECB trong
+    ti\u1EBFng Trung Qu\u1ED1c, v\u1EDBi \xFD ngh\u0129a l\xE0 \u0111\u01B0\u1EE3c
+    l\u1EE3i, c\xF3 ti\u1EC1n, may m\u1EAFn. \xDD ngh\u0129a c\u1EE7a phong t\u1EE5c
+    ng\xE0y T\u1EBFt n\xE0y kh\xF4ng n\u1EB1m \u1EDF gi\xE1 tr\u1ECB \u0111\u1ED3ng
+    ti\u1EC1n \u1EDF b\xEAn trong, m\xE0 l\xE0 mong \u01B0\u1EDBc c\xE1c b\xE9 mau
+    \u0103n ch\xF3ng l\u1EDBn, ch\u0103m ch\u1EC9 h\u1ECDc h\xE0nh, ngoan ngo\xE3n,
+    kho\u1EBB m\u1EA1nh.\r\nTi\u1EC1n m\u1EEBng tu\u1ED5i th\u01B0\u1EDDng s\u1EBD
+    ch\u1EC9 l\xE0 s\u1ED1 ti\u1EC1n nh\u1ECF, g\u1ED3m c\u1EA3 ti\u1EC1n l\u1EBB
+    v\xE0 ch\u1EB5n \u0111\u01B0\u1EE3c b\u1ECF v\xE0o phong bao m\xE0u \u0111\u1ECF,
+    v\xE0ng k\xEDn \u0111\xE1o. Ng\u01B0\u1EDDi nh\u1EADn \u0111\u01B0\u1EE3c bao
+    l\xEC x\xEC d\xF9 l\xE0 tr\u1EBB em hay ng\u01B0\u1EDDi l\u1EDBn \u0111\u1EC1u
+    r\u1EA5t vui v\u1EBB v\xE0 th\xEDch th\xFA. \r\n"
   sprite: {fileID: 197451915, guid: b64def1e31beb3e4983dfeff73c0ca34, type: 3}
   healthBuff:
     ModType: 100

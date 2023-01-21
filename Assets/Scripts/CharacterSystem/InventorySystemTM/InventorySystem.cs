@@ -57,6 +57,10 @@ namespace TheSwordOfSpring.CharacterSystem.InventorySystemTM
             inventoryItems.ForEach(x => Debug.Log(x.GetItemBase().name));
             return inventoryItems;
         }
+        public void ClearInventory()
+        {
+            inventoryItems.Clear();
+        }
 
         private bool RemoveItem(InventoryItem item)
         {

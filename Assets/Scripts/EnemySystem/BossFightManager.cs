@@ -8,6 +8,8 @@ using UnityEngine.Tilemaps;
 using Random = UnityEngine.Random;
 using System.Collections;
 using TheSwordOfSpring.Misc;
+using TheSwordOfSpring.AudioSystem;
+using SmartConsole;
 
 namespace TheSwordOfSpring.EnemySystem
 {
@@ -60,11 +62,14 @@ namespace TheSwordOfSpring.EnemySystem
             enemyHealthSystem.OnDamaged += HealthSystem_OnDamaged;
             enemyHealthSystem.OnDead += HealthSystem_OnDead;
 
+            AudioManager.Instance.StopAllMusic();
+            AudioManager.Instance.PlayMusic("Virus", true);
+
+
 
             if (debugMode)
             {
                 boss.GetComponent<ITriggerable>().Trigger();
-
                 return;
             }
             StartBoss();
@@ -98,6 +103,7 @@ namespace TheSwordOfSpring.EnemySystem
             for (int i = 0; i < 4; i++)
             {
                 GameObject go = Instantiate(PSStaticHolder.Instance.Explosion_PS, boss.position, Quaternion.identity);
+                go.transform.localScale *= 2f;
                 yield return new WaitForSeconds(.5f);
             }
 
@@ -188,7 +194,7 @@ namespace TheSwordOfSpring.EnemySystem
         }
         IEnumerator BossPlayer2Start()
         {
-            for (int i = 0; i < 50; i++)
+            for (int i = 0; i < 25; i++)
             {
                 Vector2 position = Random.insideUnitCircle * 10f;
 
@@ -231,6 +237,8 @@ namespace TheSwordOfSpring.EnemySystem
             bossCam.gameObject.SetActive(true);
 
         }
+
+
 
 
 

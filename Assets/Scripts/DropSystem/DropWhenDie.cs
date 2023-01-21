@@ -23,7 +23,7 @@ namespace TheSwordOfSpring.DropSystem
             float randomNumber = UnityEngine.Random.Range(0f, 100f);
 
             // 10% to drop this item
-            if (randomNumber <= 10f && dropped == false)
+            if (randomNumber <= 50f && dropped == false)
             {
                 int randomIndex = UnityEngine.Random.Range(0, dropItems.Length);
                 GameObject chosenObject = dropItems[randomIndex];

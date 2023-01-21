@@ -9,6 +9,8 @@ namespace TheSwordOfSpring.CharacterSystem.InventorySystemTM
     {
         [Header("Desc")]
         public new string name;
+
+        [TextArea(3, 5)]
         public string desc;
         public Sprite sprite;
 

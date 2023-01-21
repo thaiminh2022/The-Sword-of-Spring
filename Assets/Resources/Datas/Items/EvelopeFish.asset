@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EvelopeFish
   m_EditorClassIdentifier: 
   name: "Bao L\xEC X\xEC Con C\xE1"
-  desc: 
+  desc: "bao l\xEC x\xEC nh\u01B0ng m\xE0 c\xE1... \u1ECDc \u1ECDc \u1ECDc"
   sprite: {fileID: 921718986, guid: b64def1e31beb3e4983dfeff73c0ca34, type: 3}
   healthBuff:
     ModType: 100

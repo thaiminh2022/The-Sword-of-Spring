@@ -83,7 +83,8 @@ namespace TheSwordOfSpring.EnemySystem
         {
             // Offset time for each attack
             float graceTime = .5f;
-            yield return new WaitForSeconds(bossScriptable.waitTimeBtwAttack + extraTime + graceTime);
+            float reduceTime = useP2Attacks ? 0.3f : 0f;
+            yield return new WaitForSeconds(bossScriptable.waitTimeBtwAttack + extraTime + graceTime - reduceTime);
             WarmUp();
         }
 
@@ -198,7 +199,7 @@ namespace TheSwordOfSpring.EnemySystem
             }
             else
             {
-                returnAttack = enumsValue.Cast<BossAttacks>().GetRandomElement();
+                returnAttack = enumsValue.Cast<BossAttacks>().Where(attack => (int)attack > 1).GetRandomElement();
             }
 
             return returnAttack;
@@ -274,10 +275,10 @@ public enum BossState
 }
 public enum BossAttacks
 {
-    ProjectilesBom,
-    Flash,
-    ShockwaveHit,
-    NormalAttack,
+    NormalAttack = 0,
+    ProjectilesBom = 1,
+    Flash = 2,
+    ShockwaveHit = 3,
 
     //! Phase 2
     BoomDash = 4,

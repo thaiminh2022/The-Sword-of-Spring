@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EvelopeCoin
   m_EditorClassIdentifier: 
   name: "Bao L\xEC X\xEC \u0111\u1ED3ng ti\u1EC1n"
-  desc: 
+  desc: Money money money...
   sprite: {fileID: -2139525871, guid: b64def1e31beb3e4983dfeff73c0ca34, type: 3}
   healthBuff:
     ModType: 100

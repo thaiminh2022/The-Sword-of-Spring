@@ -99,6 +99,8 @@ namespace TheSwordOfSpring.CharacterSystem
             TakeDamage(damage);
             OnTakeDamage?.Invoke(this, damage);
         }
+
+       
         protected virtual void TakeDamage(float damage)
         {
             healthSystem.Damage(damage);

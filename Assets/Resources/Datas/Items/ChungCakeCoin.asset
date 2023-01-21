@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ChungCakeCoin
   m_EditorClassIdentifier: 
   name: "B\xE1nh Ch\u01B0ng \u0110\u1ED3ng Ti\u1EC1n"
-  desc: 
+  desc: "B\xE1nh ch\u01B0ng nh\u01B0ng m\xE0 c\xF3 \u0111\u1ED3ng ti\u1EC1n hehe"
   sprite: {fileID: 927092350, guid: 0df361f6e64d86b46ad790270b39f0ca, type: 3}
   healthBuff:
     ModType: 100

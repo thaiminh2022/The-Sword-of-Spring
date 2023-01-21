@@ -13,7 +13,13 @@ MonoBehaviour:
   m_Name: ChungCakeNormal
   m_EditorClassIdentifier: 
   name: "B\xE1nh Ch\u01B0ng"
-  desc: 
+  desc: "Th\u1EC3 hi\u1EC7n s\u1EF1 bi\u1EBFt \u01A1n tr\u1EDDi \u0111\u1EA5t \u0111\xE3
+    cho m\u01B0a thu\u1EADn gi\xF3 h\xF2a, \u0111\u1EC3 m\xF9a m\xE0ng b\u1ED9i thu
+    \u0111em l\u1EA1i cu\u1ED9c s\u1ED1ng \u1EA5m no cho con ng\u01B0\u1EDDi. Th\u1EC3
+    hi\u1EC7n \u0111\u01B0\u1EE3c ch\u1EEF hi\u1EBFu c\u1EE7a ng\u01B0\u1EDDi con
+    v\u1EDBi cha m\u1EB9, ch\xEDnh v\xEC th\u1EBF m\xE0 phong t\u1EE5c d\xF9ng b\xE1nh
+    ch\u01B0ng l\xE0m qu\xE0 bi\u1EBFu d\xE2ng l\xEAn cha m\u1EB9 c\u0169ng t\u1EEB
+    \u0111\xE2y m\xE0 c\xF3. "
   sprite: {fileID: -1922134207, guid: 0df361f6e64d86b46ad790270b39f0ca, type: 3}
   healthBuff:
     ModType: 100

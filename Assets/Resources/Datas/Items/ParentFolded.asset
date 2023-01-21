@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a794602a5ea593140bd5e923d84f7ee0, type: 3}
   m_Name: ParentFolded
   m_EditorClassIdentifier: 
-  name: "Gi\u1EA5y M\u1EDDi Ph\u1EE5 Huynh \u0111\u01B0\u1EE3c g\u1EADp l\u1EA1i"
+  name: "Gi\u1EA5y M\u1EDDi G\u1EADp L\u1EA1i"
   desc: "C\xF3 ng\u01B0\u1EDDi coi n\xF3 r\u1ED3i th\xEC ph\u1EA3i..."
   sprite: {fileID: -1283602710, guid: 6ba76087dea36f146b0d188970314f23, type: 3}
   healthBuff:
